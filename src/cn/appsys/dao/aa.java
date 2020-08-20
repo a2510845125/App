@@ -6,6 +6,14 @@ public class aa {
     private Integer aaaa;
     private String pppp;
 
+    public Integer getAaaa() {
+        return aaaa;
+    }
+
+    public void setAaaa(Integer aaaa) {
+        this.aaaa = aaaa;
+    }
+
     public String getQqq() {
         return qqq;
     }
