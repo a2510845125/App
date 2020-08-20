@@ -3,6 +3,7 @@ package cn.appsys.dao;
 public class aa {
     private Integer a;
     private String qqq;
+    private Integer aaaa;
 
     public String getQqq() {
         return qqq;
