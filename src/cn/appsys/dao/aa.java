@@ -4,6 +4,7 @@ public class aa {
     private Integer a;
     private String qqq;
     private Integer aaaa;
+    private String pppp;
 
     public String getQqq() {
         return qqq;
