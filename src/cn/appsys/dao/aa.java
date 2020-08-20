@@ -2,6 +2,15 @@ package cn.appsys.dao;
 
 public class aa {
     private Integer a;
+    private String qqq;
+
+    public String getQqq() {
+        return qqq;
+    }
+
+    public void setQqq(String qqq) {
+        this.qqq = qqq;
+    }
 
     public Integer getA() {
         return a;
