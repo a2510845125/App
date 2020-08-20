@@ -7,7 +7,7 @@
     <!--不同的版本，servlet的名字不一样-->
     <welcome-file-list>
     <!--<welcome-file>/WEB-INF/jsp/HouTai.jsp</welcome-file>-->
-        <welcome-file>/WEB-INF/jsp/aaaa.jsp</welcome-file>
+        <welcome-file>/WEB-INF/jsp/Login.jsp</welcome-file>
     </welcome-file-list>
 
 
