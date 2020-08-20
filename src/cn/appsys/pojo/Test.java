@@ -4,15 +4,6 @@ public class Test {
     private String id;
     private String name;
     private String nameid;
-    private String aa;
-
-    public String getAa() {
-        return aa;
-    }
-
-    public void setAa(String aa) {
-        this.aa = aa;
-    }
 
     public String getNameid() {
         return nameid;
