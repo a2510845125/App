@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间不能随意写，应该写此文件所在的包+文件名-->
+<!--目的 为了找到对应的接口文件-->
+<mapper namespace="cn.appsys.dao.LoginMapper">
+    <!--映射属性-->
+    <!---->
+    <resultMap id="DevLoginList" type="Dev_user">
+        <id property="id" column="id"/>
+        <!--普通标签用result-->
+        <result property="devCode" column="devCode"/>
+        <result property="devName" column="devName"/>
+        <result property="devPassword" column="devPassword"/>
+        <result property="devEmail" column="devEmail"/>
+        <result property="devInfo" column="devInfo"/>
+        <result property="createdBy" column="createdBy"/>
+        <result property="creationDate" column="creationDate"/>
+        <result property="modifyBy" column="modifyBy"/>
+        <result property="modifyDate" column="modifyDate"/>
+    </resultMap>
+</mapper>

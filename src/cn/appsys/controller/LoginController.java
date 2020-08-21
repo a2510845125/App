@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
+
 //    普通用户登录跳转
     @RequestMapping("/Login_one.html")
     public String login_one(){

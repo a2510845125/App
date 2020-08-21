@@ -4,15 +4,16 @@ import java.util.Date;
 
 //开发者用户表
 public class Dev_user {
-    private Integer id;//主键id
-    private String typeCode;//类型编码
-    private String typeName;//类型名称
-    private Integer valueId;//类型值ID
-    private String valueName;//类型值Name
-    private Integer createdBy;//创建者（来源于backend_user用户表的用户id）
-    private Date creationDate;//创建时间
-    private Integer modifyBy;//更新者（来源于backend_user用户表的用户id）
-    private Date modifyDate;//最新更新时间
+    private Integer id;
+    private String devCode;
+    private String devName;
+    private String devPassword;
+    private String devEmail;
+    private String devInfo;
+    private Integer createdBy;
+    private Date creationDate;
+    private Integer modifyBy;
+    private Date modifyDate;
 
     public Integer getId() {
         return id;
@@ -22,36 +23,44 @@ public class Dev_user {
         this.id = id;
     }
 
-    public String getTypeCode() {
-        return typeCode;
+    public String getDevCode() {
+        return devCode;
     }
 
-    public void setTypeCode(String typeCode) {
-        this.typeCode = typeCode;
+    public void setDevCode(String devCode) {
+        this.devCode = devCode;
     }
 
-    public String getTypeName() {
-        return typeName;
+    public String getDevName() {
+        return devName;
     }
 
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public void setDevName(String devName) {
+        this.devName = devName;
     }
 
-    public Integer getValueId() {
-        return valueId;
+    public String getDevPassword() {
+        return devPassword;
     }
 
-    public void setValueId(Integer valueId) {
-        this.valueId = valueId;
+    public void setDevPassword(String devPassword) {
+        this.devPassword = devPassword;
     }
 
-    public String getValueName() {
-        return valueName;
+    public String getDevEmail() {
+        return devEmail;
     }
 
-    public void setValueName(String valueName) {
-        this.valueName = valueName;
+    public void setDevEmail(String devEmail) {
+        this.devEmail = devEmail;
+    }
+
+    public String getDevInfo() {
+        return devInfo;
+    }
+
+    public void setDevInfo(String devInfo) {
+        this.devInfo = devInfo;
     }
 
     public Integer getCreatedBy() {
