@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2020/8/20
-  Time: 23:42
+  Date: 2020/8/21
+  Time: 15:34
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<p>此页面为管理员登录页面</p>
+${moofactory_liveList.devName}
 </body>
 </html>

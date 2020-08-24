@@ -7,6 +7,7 @@
 <mapper namespace="cn.appsys.dao.LoginMapper">
     <!--映射属性-->
     <!---->
+    <!--开发者的的登录的映射-->
     <resultMap id="DevLoginList" type="Dev_user">
         <id property="id" column="id"/>
         <!--普通标签用result-->
@@ -20,4 +21,41 @@
         <result property="modifyBy" column="modifyBy"/>
         <result property="modifyDate" column="modifyDate"/>
     </resultMap>
+<!--后台管理员的登录-->
+    <resultMap id="BackendLoginList" type="Backend_user">
+        <id property="id" column="id"/>
+        <!--普通标签用result-->
+        <result property="userCode" column="userCode"/>
+        <result property="userName" column="userName"/>
+        <result property="userType" column="userType"/>
+        <result property="createdBy" column="createdBy"/>
+        <result property="creationDate" column="creationDate"/>
+        <result property="modifyBy" column="modifyBy"/>
+        <result property="modifyDate" column="modifyDate"/>
+        <result property="userPassword" column="userPassword"/>
+    </resultMap>
+    <!--==================================开发者登录的sql语句-->
+    <select id="Devlogin" resultType="Dev_user">
+        select *  from appinfodb.dev_user
+        <trim prefix="where" suffixOverrides="and|or" prefixOverrides="and|or">
+            <if test="devCode !=null and devCode !=''">
+                and devCode =#{devCode}
+            </if>
+            <if test="devPassword !=null and devPassword !=''">
+                and devPassword=#{devPassword}
+            </if>
+        </trim>
+    </select>
+    <!--==================================管理员登录的sql语句-->
+    <select id="BackendLogin" resultType="Backend_user">
+        select *  from backend_user
+        <trim prefix="where" suffixOverrides="and|or" prefixOverrides="and|or">
+            <if test="userCode !=null and userCode !=''">
+                and userCode =#{userCode}
+            </if>
+            <if test="userPassword !=null and userPassword !=''">
+                and userPassword=#{userPassword}
+            </if>
+        </trim>
+    </select>
 </mapper>

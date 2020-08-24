@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--&lt;!&ndash;命名空间不能随意写，应该写此文件所在的包+文件名&ndash;&gt;-->
+<!--&lt;!&ndash;目的 为了找到对应的接口文件&ndash;&gt;-->
+<!--<mapper namespace="cn.appsys.dao.AppInfoMapper">-->
+<!--&lt;!&ndash;映射实体类属性&ndash;&gt;-->
+<!--<resultMap id="App_infoList" type="App_info">-->
+<!--<id property="id" column="id"/>-->
+<!--&lt;!&ndash;普通标签用result&ndash;&gt;-->
+<!--<result property="softwareName" column="softwareName"/>-->
+<!--<result property="APKName" column="APKName"/>-->
+<!--<result property="supportROM" column="supportROM"/>-->
+<!--<result property="interfaceLanguage" column="interfaceLanguage"/>-->
+<!--<result property="softwareSize" column="softwareSize"/>-->
+<!--<result property="updateDate" column="updateDate"/>-->
+<!--<result property="devId" column="devId"/>-->
+<!--<result property="appInfo" column="appInfo"/>-->
+<!--<result property="status" column="status"/>-->
+<!--<result property="onSaleDate" column="onSaleDate"/>-->
+<!--<result property="offSaleDate" column="offSaleDate"/>-->
+<!--<result property="flatformId" column="flatformId"/>-->
+<!--<result property="categoryLevel3" column="categoryLevel3"/>-->
+<!--<result property="downloads" column="downloads"/>-->
+<!--</resultMap>-->
+<!--</mapper>-->
+
+
+<mapper namespace="cn.appsys.dao.AppInfoMapper">
+    <resultMap id="App_infoList" type="App_info">
+        <id property="id" column="id"/>
+        <!--普通标签用result-->
+        <result property="softwareName" column="softwareName"/>
+        <result property="APKName" column="APKName"/>
+        <result property="supportROM" column="supportROM"/>
+        <result property="interfaceLanguage" column="interfaceLanguage"/>
+        <result property="softwareSize" column="softwareSize"/>
+        <result property="updateDate" column="updateDate"/>
+        <result property="devId" column="devId"/>
+        <result property="appInfo" column="appInfo"/>
+        <result property="status" column="status"/>
+        <result property="onSaleDate" column="onSaleDate"/>
+        <result property="offSaleDate" column="offSaleDate"/>
+        <result property="flatformId" column="flatformId"/>
+        <result property="categoryLevel3" column="categoryLevel3"/>
+        <result property="downloads" column="downloads"/>
+    </resultMap>
+
+
+    <select id="getAppList" resultType="App_info">
+        select * from app_info
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="softwareName!=null and softwareName!=''">
+                and softwareName like CONCAT('%',#{softwareName},'%')
+            </if>
+            <if test="APKName !=null and APKName !=0">
+                and APKName =#{APKName}
+            </if>
+        </trim>
+        limit #{from},#{pageSize}
+    </select>
+
+    <!--查询总条数-->
+    <select id="getTotalCount" resultType="int">
+        select COUNT(1) from app_info
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="softwareName!=null and softwareName!=''">
+                and softwareName like CONCAT('%',#{softwareName},'%')
+            </if>
+            <if test="APKName!=null and APKName!=''">
+                and APKName =#{APKName}
+            </if>
+        </trim>
+    </select>
+</mapper>

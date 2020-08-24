@@ -13,12 +13,52 @@ public class App_info {
     private Date updateDate;//更新时间
     private Integer devId;//开发者id
     private String appInfo;//应用简介
+
+    @Override
+    public String toString() {
+        return "App_info{" +
+                "id=" + id +
+                ", softwareName='" + softwareName + '\'' +
+                ", APKName='" + APKName + '\'' +
+                ", supportROM='" + supportROM + '\'' +
+                ", interfaceLanguage='" + interfaceLanguage + '\'' +
+                ", softwareSize='" + softwareSize + '\'' +
+                ", updateDate=" + updateDate +
+                ", devId=" + devId +
+                ", appInfo='" + appInfo + '\'' +
+                ", status=" + status +
+                ", onSaleDate=" + onSaleDate +
+                ", offSaleDate=" + offSaleDate +
+                ", flatformId=" + flatformId +
+                ", categoryLevel3=" + categoryLevel3 +
+                ", downloads=" + downloads +
+                ", createdBy=" + createdBy +
+                ", creationDate=" + creationDate +
+                ", modifyBy=" + modifyBy +
+                ", modifyDate=" + modifyDate +
+                ", categoryLevel1=" + categoryLevel1 +
+                ", categoryLevel2=" + categoryLevel2 +
+                ", logoPicPath='" + logoPicPath + '\'' +
+                ", logoLocPath='" + logoLocPath + '\'' +
+                ", versionId=" + versionId +
+                '}';
+    }
+
     private Integer status;//状态（来源于：data_dictionary，1 待审核 2 审核通过 3 审核不通过 4 已上架 5 已下架）
     private Date onSaleDate;//上架日期
     private Date offSaleDate;//下架时间
     private Integer flatformId;//所属平台（来源于：data_dictionary，1 手机 2 平板 3 通用）
     private Integer categoryLevel3;//所属三级分类（来源于：data_dictionary）
     private Integer downloads;//下载量
+    private Integer createdBy;//创建者（来源于dev_user开发者信息表的用户id）
+    private Date creationDate;//创建时间
+    private Integer modifyBy;//更新者（来源于dev_user开发者信息表的用户id）
+    private Date modifyDate;//最新更新时间
+    private Integer categoryLevel1;//所属一级分类（来源于：data_dictionary）
+    private Integer categoryLevel2;//所属二级分类（来源于：data_dictionary）
+    private String logoPicPath;//LOGO图片url路径
+    private String logoLocPath;//LOGO图片的服务器存储路径
+    private Integer versionId;//最新版本的id
 
     public Integer getId() {
         return id;
@@ -212,13 +252,5 @@ public class App_info {
         this.versionId = versionId;
     }
 
-    private Integer createdBy;//创建者（来源于dev_user开发者信息表的用户id）
-    private Date creationDate;//创建时间
-    private Integer modifyBy;//更新者（来源于dev_user开发者信息表的用户id）
-    private Date modifyDate;//最新更新时间
-    private Integer categoryLevel1;//所属一级分类（来源于：data_dictionary）
-    private Integer categoryLevel2;//所属二级分类（来源于：data_dictionary）
-    private String logoPicPath;//LOGO图片url路径
-    private String logoLocPath;//LOGO图片的服务器存储路径
-    private Integer versionId;//最新版本的id
+
 }

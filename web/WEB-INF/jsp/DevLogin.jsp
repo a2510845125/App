@@ -1,79 +1,40 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2020/8/20
-  Time: 22:56
+  Date: 2020/8/21
+  Time: 14:01
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link href="/statics/css/bootstrap.css" rel="stylesheet">
-<script type="text/javascript" src="/statics/js/jquery-3.4.1.min.js"></script>
-
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
+<form class="loginForm" action="${pageContext.request.contextPath }/login/DevdoLogin.html"  name="actionForm" id="actionForm"  method="post" >
 
 <div class="main">
     <div class="login">
         <div class="log-con">
-            <div id="Login" class="row">
-                <div class="col-md-12" style="margin-top: 50px"><h3><a id="BT" href="#"
-                                                                       style="color: white;">APP信息管理平台</a></h3></div>
-                <div class="col-md-12" style="margin-top: 40px"><a id="BT2" href="/login/DevLogin.html"
-                                                                   style="color: white">开发者平台入口</a>
-                </div>
-                <div class="col-md-12" style="margin-top: 40px"><h5><a id="BT3" href="/login/asd.html"
-                                                                       style="color: white">后台管理系统入口</a></h5></div>
-                <span>
-                         <div class="col-md-12" style="margin-top: 160px">
-                             <div style="width: 300px;height: 50px;border-top:1px solid #fffdfd ;margin: 0 auto;text-align: center">
-                                 <span style="line-height: 50px"> ©Microsoft 2020 Rights Reserved</span>
-                             </div>
-                         </div>
-                    </span>
-            </div>
+            <span>开发者登录</span>
+            <label for="devCode">请输入用户名</label>
+            <input type="text" id="devCode" name="devCode" class="name" placeholder=""required>
+            <label for="devPassword">请输入密码</label>
+            <input type="text" id="devPassword" name="devPassword" class="password" placeholder=""required>
+            <input type="submit" value="登录"/>
+            <span>${error}</span>
         </div>
     </div>
 </div>
-<div id="live2d-widget">
-    <canvas id="live2dcanvas"width="300" height="600"
-            style="z-index: 99999;"></canvas>
-</div>
-
-
+</form>
 </body>
 </html>
-<script type="text/javascript" src="/statics/js/three.min.js"></script>
-
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    a {
-        text-decoration: none;
-    }
-
-    a:hover {
-        text-decoration: none;
-    }
-
-    #Login > div:hover {
-        transform: scale(1.2);
-        transition: all .4s;
-        -moz-transition: all .4s;
-        -webkit-transition: all .4s;
-        -o-transition: all .4s;
-    }
-
     body {
         margin: 0;
         overflow: hidden;
         background: linear-gradient(to bottom, #19778c, #095f88);
-        background-size: 1400% 300%;
+        background-size:1400% 300%;
         animation: dynamics 6s ease infinite;
         -webkit-animation: dynamics 6s ease infinite;
         -moz-animation: dynamics 6s ease infinite;
@@ -81,7 +42,6 @@
         color: #ffffff;
         min-height: 700px;
     }
-
     /*登录样式*/
     .main {
         position: fixed;
@@ -92,19 +52,17 @@
         display: flex;
         justify-content: center;
     }
-
     .login {
         width: 470px;
-        height: 470px;
+        height:470px;
         background: linear-gradient(to bottom, #19778c, #095f88);
         animation: dynamics 6s ease infinite;
         -webkit-animation: dynamics 6s ease infinite;
         -moz-animation: dynamics 6s ease infinite;
         opacity: 0.9;
         border: solid 1px #13a1fc;
-        background-size: 1400% 300%;
+        background-size:1400% 300%;
     }
-
     @keyframes dynamics {
         0% {
             background-position: 0% 0%;
@@ -116,7 +74,6 @@
             background-position: 100% 0%;
         }
     }
-
     .log-con {
         background: linear-gradient(#13a1fc, #13a1fc) left top, linear-gradient(#13a1fc, #13a1fc) left top,
         linear-gradient(#13a1fc, #13a1fc) right top, linear-gradient(#13a1fc, #13a1fc) right top,
@@ -129,8 +86,7 @@
         padding: 3px 1px 1px 0;
         border-radius: 3px;
     }
-
-    .log-con > span {
+    .log-con >span {
         font-size: 30px;
         font-weight: bold;
         line-height: 24px;
@@ -138,8 +94,7 @@
         display: block;
         margin: 20px 0 44px 0;
     }
-
-    .log-con > span::after {
+    .log-con >span::after {
         display: block;
         content: '';
         width: 57px;
@@ -150,8 +105,7 @@
         position: relative;
         left: 206px;
     }
-
-    .log-con > input {
+    .log-con>input {
         display: block;
         margin: 10px 0 32px 70px;
         width: 330px;
@@ -165,8 +119,7 @@
         padding-left: 10px;
         color: #000000;
     }
-
-    .log-con > a {
+    .log-con>a {
         width: 340px;
         height: 44px;
         background-color: #0090ff;
@@ -183,20 +136,17 @@
         color: #000000;
         font-size: 16px;
     }
-
-    .log-con > .code {
+    .log-con>.code {
         width: 216px;
         display: inline-block;
         margin-left: 6px;
     }
-
-    .log-con > #code {
+    .log-con>#code {
         width: 94px;
         display: inline-block;
         margin-left: 14px;
         cursor: pointer;
     }
-
     /*logo*/
     .logo {
         width: 168px;
@@ -205,12 +155,10 @@
         left: 150px;
         top: 26px;
     }
-
-    .logo > img {
+    .logo>img {
         max-width: 100%;
         max-height: 100%;
     }
-
     /*版权样式*/
     .copyright {
         position: fixed;
@@ -221,6 +169,8 @@
         text-align: center;
     }
 </style>
+<script type="text/javascript" src="/statics/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/statics/js/three.min.js"></script>
 <script type="text/javascript">
 
     var SEPARATION = 100, AMOUNTX = 60, AMOUNTY = 40;
@@ -240,40 +190,40 @@
     //初始化
     function init() {
 
-        container = document.createElement('div');	//创建容器
-        document.body.appendChild(container);			//将容器添加到页面上
-        camera = new THREE.PerspectiveCamera(120, window.innerWidth / window.innerHeight, 1, 1500);		//创建透视相机设置相机角度大小等
-        camera.position.set(0, 450, 2000);		//设置相机位置
+        container = document.createElement( 'div' );	//创建容器
+        document.body.appendChild( container );			//将容器添加到页面上
+        camera = new THREE.PerspectiveCamera( 120, window.innerWidth / window.innerHeight, 1, 1500 );		//创建透视相机设置相机角度大小等
+        camera.position.set(0,450,2000);		//设置相机位置
 
         scene = new THREE.Scene();			//创建场景
         particles = new Array();
 
         var PI2 = Math.PI * 2;
         //设置粒子的大小，颜色位置等
-        var material = new THREE.ParticleCanvasMaterial({
+        var material = new THREE.ParticleCanvasMaterial( {
             color: 0x0f96ff,
-            vertexColors: true,
+            vertexColors:true,
             size: 4,
-            program: function (context) {
+            program: function ( context ) {
                 context.beginPath();
-                context.arc(0, 0, 0.01, 0, PI2, true);	//画一个圆形。此处可修改大小。
+                context.arc( 0, 0, 0.01, 0, PI2, true );	//画一个圆形。此处可修改大小。
                 context.fill();
             }
-        });
+        } );
         //设置长条粒子的大小颜色长度等
-        var materialY = new THREE.ParticleCanvasMaterial({
+        var materialY = new THREE.ParticleCanvasMaterial( {
             color: 0xffffff,
-            vertexColors: true,
+            vertexColors:true,
             size: 1,
-            program: function (context) {
+            program: function ( context ) {
 
                 context.beginPath();
                 //绘制渐变色的矩形
-                var lGrd = context.createLinearGradient(-0.008, 0.25, 0.016, -0.25);
+                var lGrd = context.createLinearGradient(-0.008,0.25,0.016,-0.25);
                 lGrd.addColorStop(0, '#16eff7');
                 lGrd.addColorStop(1, '#0090ff');
                 context.fillStyle = lGrd;
-                context.fillRect(-0.008, 0.25, 0.016, -0.25);  //注意此处的坐标大小
+                context.fillRect(-0.008,0.25,0.016,-0.25);  //注意此处的坐标大小
                 //绘制底部和顶部圆圈
                 context.fillStyle = "#0090ff";
                 context.arc(0, 0, 0.008, 0, PI2, true);    //绘制底部圆圈
@@ -290,35 +240,35 @@
                 context.fill();
 
             }
-        });
+        } );
 
         //循环判断创建随机数选择创建粒子或者粒子条
         var i = 0;
-        for (var ix = 0; ix < AMOUNTX; ix++) {
-            for (var iy = 0; iy < AMOUNTY; iy++) {
-                var num = Math.random() - 0.1;
-                if (num > 0) {
-                    particle = particles[i++] = new THREE.Particle(material);
+        for ( var ix = 0; ix < AMOUNTX; ix ++ ) {
+            for ( var iy = 0; iy < AMOUNTY; iy ++ ) {
+                var num = Math.random()-0.1;
+                if (num >0 ) {
+                    particle = particles[ i ++ ] = new THREE.Particle( material );
                     console.log("material")
                 }
                 else {
-                    particle = particles[i++] = new THREE.Particle(materialY);
+                    particle = particles[ i ++ ] = new THREE.Particle( materialY );
                     console.log("materialY")
                 }
                 //particle = particles[ i ++ ] = new THREE.Particle( material );
-                particle.position.x = ix * SEPARATION - ((AMOUNTX * SEPARATION) / 2);
-                particle.position.z = iy * SEPARATION - ((AMOUNTY * SEPARATION) / 2);
-                scene.add(particle);
+                particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 );
+                particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 );
+                scene.add( particle );
             }
         }
 
         renderer = new THREE.CanvasRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        container.appendChild(renderer.domElement);
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        container.appendChild( renderer.domElement );
         //document.addEventListener( 'mousemove', onDocumentMouseMove, false );
         //document.addEventListener( 'touchstart', onDocumentTouchStart, false );
         //document.addEventListener( 'touchmove', onDocumentTouchMove, false );
-        window.addEventListener('resize', onWindowResize, false);
+        window.addEventListener( 'resize', onWindowResize, false );
     }
 
     //浏览器大小改变时重新渲染
@@ -327,11 +277,11 @@
         windowHalfY = window.innerHeight / 2;
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize( window.innerWidth, window.innerHeight );
     }
 
     function animate() {
-        requestAnimationFrame(animate);
+        requestAnimationFrame( animate );
         render();
     }
 
@@ -345,47 +295,34 @@
                 //更新粒子位置
                 particle.position.y = (Math.sin((ix + count) * 0.3) * 50) + (Math.sin((iy + count) * 0.5) * 50);
                 //更新粒子大小
-                particle.scale.x = particle.scale.y = particle.scale.z = ((Math.sin((ix + count) * 0.3) + 1) * 4 + (Math.sin((iy + count) * 0.5) + 1) * 4) * 50;	//正常情况下再放大100倍*1200
+                particle.scale.x =  particle.scale.y = particle.scale.z  = ( (Math.sin((ix + count) * 0.3) + 1) * 4 + (Math.sin((iy + count) * 0.5) + 1) * 4 )*50;	//正常情况下再放大100倍*1200
             }
         }
 
-        renderer.render(scene, camera);
+        renderer.render( scene, camera );
         count += 0.1;
     }
 
     //验证码
     function change() {
-        code = $("#code");
+        code=$("#code");
         // 验证码组成库
         var arrays = new Array(
-            '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
-            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-            'u', 'v', 'w', 'x', 'y', 'z',
-            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-            'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-            'U', 'V', 'W', 'X', 'Y', 'Z'
+            '1','2','3','4','5','6','7','8','9','0',
+            'a','b','c','d','e','f','g','h','i','j',
+            'k','l','m','n','o','p','q','r','s','t',
+            'u','v','w','x','y','z',
+            'A','B','C','D','E','F','G','H','I','J',
+            'K','L','M','N','O','P','Q','R','S','T',
+            'U','V','W','X','Y','Z'
         );
-        codes = '';// 重新初始化验证码
-        for (var i = 0; i < 4; i++) {
+        codes='';// 重新初始化验证码
+        for(var i = 0; i<4; i++){
             // 随机获取一个数组的下标
-            var r = parseInt(Math.random() * arrays.length);
+            var r = parseInt(Math.random()*arrays.length);
             codes += arrays[r];
         }
         // 验证码添加到input里
         code.val(codes);
     }
 </script>
-
-
-<%--右下角--%>
-<script type="text/javascript" charset="utf-8" async=""
-        src="https://cdn.jsdelivr.net/npm/live2d-widget@3.0.4/lib/L2Dwidget.0.min.js"></script>
-
-<script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/live2d-widget@3.0.4/lib/L2Dwidget.min.js?_=1557308476616"></script>
-<script type="text/javascript">
-    L2Dwidget.init();
-</script>
-<script type="text/javascript">getFollowStatus('df91d846-448f-4c9a-c764-08d6b94b3063')</script>
-
