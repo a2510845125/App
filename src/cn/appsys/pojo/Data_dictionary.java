@@ -1,5 +1,7 @@
 package cn.appsys.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 //数据字典
@@ -10,12 +12,29 @@ public class Data_dictionary {
     private Integer valueId;//类型值ID
     private String valueName;//类型值id
     private Integer createdBy;//创建者（来源于backend_user用户表的用户id）
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date creationDate;//创建时间
     private Integer modifyBy;//更新者（来源于backend_user用户表的用户id）
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date modifyDate;//最新创建时间
 
     public Integer getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Data_dictionary{" +
+                "id=" + id +
+                ", typeCode='" + typeCode + '\'' +
+                ", typeName='" + typeName + '\'' +
+                ", valueId=" + valueId +
+                ", valueName='" + valueName + '\'' +
+                ", createdBy=" + createdBy +
+                ", creationDate=" + creationDate +
+                ", modifyBy=" + modifyBy +
+                ", modifyDate=" + modifyDate +
+                '}';
     }
 
     public void setId(Integer id) {

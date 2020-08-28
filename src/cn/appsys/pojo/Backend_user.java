@@ -1,5 +1,7 @@
 package cn.appsys.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 //后台用户表
@@ -9,8 +11,10 @@ public class Backend_user {
     private String userName;//用户名称
     private Integer userType;//用户角色类型（来源于数据字典表，分为：超管、财务、市场、运营、销售）
     private Integer createdBy;//创建者（来源于backend_user用户表的用户id）
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date creationDate;//创建时间
     private Integer modifyBy;//更新者（来源于backend_user用户表的用户id）
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date modifyDate;//最新更新时间
     private String userPassword;//用户密码
 

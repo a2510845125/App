@@ -70,7 +70,7 @@ public String Login(){
         Backend_user backend_user=loginService.BackendLogin(userCode,userPassword);
 //        根据结果 进行不同的跳转
         if (backend_user != null) {
-//            说明用户登录成功
+//            说明用户登录成功ChakanList
             System.out.println("管理员登录成功");
             session.setAttribute(Constants.USER_SESSION,backend_user);
             return "redirect:/login/Main.html";

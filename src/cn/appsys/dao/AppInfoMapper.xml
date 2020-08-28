@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--&lt;!&ndash;命名空间不能随意写，应该写此文件所在的包+文件名&ndash;&gt;-->
 <!--&lt;!&ndash;目的 为了找到对应的接口文件&ndash;&gt;-->
 <!--<mapper namespace="cn.appsys.dao.AppInfoMapper">-->
@@ -54,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="softwareName!=null and softwareName!=''">
                 and softwareName like CONCAT('%',#{softwareName},'%')
             </if>
-            <if test="APKName !=null and APKName !=0">
+            <if test="APKName !=null and APKName !='' ">
                 and APKName =#{APKName}
             </if>
         </trim>
@@ -73,4 +73,77 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             </if>
         </trim>
     </select>
+
+    <!--============================================================添加-->
+    <insert id="addAPP" parameterType="App_info">
+        insert into app_info (
+      softwareName,APKName,supportROM,
+					interfaceLanguage,softwareSize,downloads,appInfo,status)
+					values(#{softwareName},#{APKName},#{supportROM},#{interfaceLanguage},
+					#{softwareSize},#{downloads},#{appInfo},#{status})
+    </insert>
+    <!--==========================================================根据id删除APP-->
+    <delete id="getdelete" parameterType="App_info">
+         delete from app_info
+        where id=#{id}
+    </delete>
+    <!--根据id查看详情-->
+    <select id="ChakanList" resultType="App_info">
+         select a.id, a.softwareName,a.APKName,a.supportROM,a.softwareSize,a.devId,a.interfaceLanguage,a.appInfo,
+        (select devName from dev_user where id = a.devId) as devName,
+        a.status,
+        (select valueName from data_dictionary d where  a.status=d.valueId AND d.typeCode='APP_STATUS') as statusName,
+        a.flatformId,
+        (select valueName from data_dictionary d where  a.flatformId=d.valueId AND d.typeCode='APP_FLATFORM') as flatformName,
+        a.categoryLevel1,
+        (select categoryName from app_category c where  c.id=a.categoryLevel1) as categoryLevel1Name,
+        a.categoryLevel2,
+        (select categoryName from app_category c where  c.id=a.categoryLevel2) as categoryLevel2Name,
+        a.categoryLevel3,
+        (select categoryName from app_category c where  c.id=a.categoryLevel3) as categoryLevel3Name,
+        a.downloads,
+        a.onSaleDate,
+        a.versionId,
+        (select v.versionNo from app_version v where v.id=a.versionId ) as versionNo
+        from  app_info a
+           where id=#{id}
+    </select>
+    <!--根据id查看版本等信息-->
+    <select id="ChakanBanben" resultType="App_version">
+        	select v.*,
+			(select a.softwareName from app_info a where a.id=v.appId ) as appName,
+			(select valueName from data_dictionary d where  v.publishStatus=d.valueId AND d.typeCode='PUBLISH_STATUS') as publishStatusName
+			from  app_version  v
+	WHERE v.appId = #{appId}
+order by v.creationDate DESC
+    </select>
+    <!--修改上架为下架操作-->
+    <update id="getShangJiaById" parameterType="App_info">
+        update app_info set status=5
+        where id=#{id}
+    </update>
+    <!--修改下架为上架操作-->
+    <update id="getXiaJiaById" parameterType="App_info">
+        update app_info set status=4
+        where id=#{id}
+    </update>
+    <!--根据id修改信息-->
+    <update id="modifyById" parameterType="App_info">
+        update app_info
+        <trim prefix="set" suffixOverrides=",">
+            <if test="softwareName !=null and softwareName !=''">softwareName=#{softwareName},</if>
+            <if test="APKName !=null and APKName !=''">APKName=#{APKName},</if>
+            <if test="supportROM !=null and supportROM !=''">supportROM=#{supportROM},</if>
+            <if test="interfaceLanguage !=null and interfaceLanguage !=''">interfaceLanguage=#{interfaceLanguage},</if>
+            <if test="softwareSize !=null and softwareSize !=''">softwareSize=#{softwareSize},</if>
+            <if test="appInfo !=null and appInfo !=''">appInfo=#{appInfo}</if>
+        </trim>
+        where id=#{id}
+    </update>
+    <!--根据id 新增版本-->
+    <!--返回主键类型被自动强转为Long-->
+    <insert id="addByid" parameterType="App_version">
+		insert into app_version (appId,versionNo,versionSize,publishStatus,creationDate)
+				values(#{appId},#{versionNo},#{versionInfo},#{publishStatus},#{creationDate})
+	</insert>
 </mapper>

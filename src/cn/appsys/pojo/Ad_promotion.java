@@ -1,5 +1,7 @@
 package cn.appsys.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Ad_promotion {
@@ -8,11 +10,33 @@ public class Ad_promotion {
     private String adPicPath;//广告图片促进在路径
     private Integer adPV;//广告点击量
     private Integer carouselPosition;//轮播位
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startTime;//起效时间
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endTime;//失效时间
+
+    @Override
+    public String toString() {
+        return "Ad_promotion{" +
+                "id=" + id +
+                ", appId=" + appId +
+                ", adPicPath='" + adPicPath + '\'' +
+                ", adPV=" + adPV +
+                ", carouselPosition=" + carouselPosition +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", createdBy=" + createdBy +
+                ", creationDate=" + creationDate +
+                ", modifyBy=" + modifyBy +
+                ", modifyDate=" + modifyDate +
+                '}';
+    }
+
     private Integer createdBy;//创建者（来源于backend_user用户表的用户id）
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date creationDate;//创建时间
     private Integer modifyBy;//更新者（来源于backend_user用户表的用户id）
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date modifyDate;//最新更新时间
 
     public Integer getId() {

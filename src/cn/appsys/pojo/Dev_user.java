@@ -1,5 +1,7 @@
 package cn.appsys.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 //开发者用户表
@@ -11,7 +13,25 @@ public class Dev_user {
     private String devEmail;
     private String devInfo;
     private Integer createdBy;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date creationDate;
+
+    @Override
+    public String toString() {
+        return "Dev_user{" +
+                "id=" + id +
+                ", devCode='" + devCode + '\'' +
+                ", devName='" + devName + '\'' +
+                ", devPassword='" + devPassword + '\'' +
+                ", devEmail='" + devEmail + '\'' +
+                ", devInfo='" + devInfo + '\'' +
+                ", createdBy=" + createdBy +
+                ", creationDate=" + creationDate +
+                ", modifyBy=" + modifyBy +
+                ", modifyDate=" + modifyDate +
+                '}';
+    }
+
     private Integer modifyBy;
     private Date modifyDate;
 

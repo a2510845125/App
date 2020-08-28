@@ -1,5 +1,7 @@
 package cn.appsys.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 //APP所属分类
@@ -9,8 +11,25 @@ public class App_category {
     private String categoryName;//分类名称
     private Integer parentId;//父级节点ID
     private Integer createdBy;//创建者（来源于backend_user用户表的用户id）
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date creationTime;//创建时间
+
+    @Override
+    public String toString() {
+        return "App_category{" +
+                "id=" + id +
+                ", categoryCode='" + categoryCode + '\'' +
+                ", categoryName='" + categoryName + '\'' +
+                ", parentId=" + parentId +
+                ", createdBy=" + createdBy +
+                ", creationTime=" + creationTime +
+                ", modifyBy=" + modifyBy +
+                ", modifyDate=" + modifyDate +
+                '}';
+    }
+
     private Integer modifyBy;//更新着
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date modifyDate;//最新更新时间
 
     public Integer getId() {
