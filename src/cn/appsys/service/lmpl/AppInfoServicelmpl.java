@@ -18,13 +18,13 @@ public class AppInfoServicelmpl implements cn.appsys.service.AppInfoService {
     private AppInfoMapper mapper;
 
     @Override
-    public List<App_info> getAppList(String softwareName, String APKName, Integer currentPageNo, Integer pageSize) {
-        return mapper.getAppList(softwareName, APKName, (currentPageNo - 1) * pageSize, pageSize);
+    public List<App_info> getAppList(String softwareName, String APKName, Integer flatformId,Integer categoryLevel1,Integer categoryLevel2,Integer categoryLevel3, Integer currentPageNo, Integer pageSize) {
+        return mapper.getAppList(softwareName, APKName, flatformId,categoryLevel1,categoryLevel2,categoryLevel3, (currentPageNo - 1) * pageSize, pageSize);
     }
 
     @Override
-    public int getTotalCount(String softwareName, String APKName) {
-        return mapper.getTotalCount(softwareName, APKName);
+    public int getTotalCount(String softwareName, String APKName, Integer flatformId,Integer categoryLevel1,Integer categoryLevel2,Integer categoryLevel3 ) {
+        return mapper.getTotalCount(softwareName, APKName, flatformId,categoryLevel1,categoryLevel2,categoryLevel3);
     }
 
     //    ===========================================添加
@@ -57,14 +57,22 @@ public class AppInfoServicelmpl implements cn.appsys.service.AppInfoService {
 
     //修改上架为下架操作
     @Override
-    public App_info getShangJiaById(Integer id) {
-        return mapper.getShangJiaById(id);
+    public boolean getShangJiaById(Integer id) {
+        if (mapper.getShangJiaById(id) > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //修改 下架 为 上架操作
     @Override
-    public App_info getXiaJiaById(Integer id) {
-        return mapper.getXiaJiaById(id);
+    public boolean getXiaJiaById(Integer id) {
+        if (mapper.getXiaJiaById(id) > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //根据id修改信息
@@ -76,10 +84,21 @@ public class AppInfoServicelmpl implements cn.appsys.service.AppInfoService {
             return false;
         }
     }
+
     //    根据id新增版本
     @Override
     public boolean addByid(App_version app_version) {
         if (mapper.addByid(app_version) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //    根据id修改-修改版本
+    @Override
+    public boolean xiugaiByid(App_info app_info) throws Exception {
+        if (mapper.modifyById(app_info) > 0) {
             return true;
         } else {
             return false;

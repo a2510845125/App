@@ -61,9 +61,17 @@ public class APP {
                           Integer downloads,
                           String appInfo,
                           Integer status,
+                          Integer flatformId,
+                          Integer categoryLevel1,
+                          Integer categoryLevel2,
+                          Integer categoryLevel3,
                           HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
         System.out.println("=================已经进入添加操作");
+        System.out.println("====================所属平台"+flatformId);
+        System.out.println("====================一级菜单"+categoryLevel1);
+        System.out.println("====================一级菜单"+categoryLevel2);
+        System.out.println("====================一级菜单"+categoryLevel3);
         //        调用相关业务
         App_info app_info = new App_info();
         app_info.setSoftwareName(softwareName);
@@ -74,6 +82,10 @@ public class APP {
         app_info.setDownloads(downloads);
         app_info.setAppInfo(appInfo);
         app_info.setStatus(status);
+        app_info.setFlatformId(flatformId);
+        app_info.setCategoryLevel1(categoryLevel1);
+        app_info.setCategoryLevel2(categoryLevel2);
+        app_info.setCategoryLevel3(categoryLevel3);
         boolean r = appInfoService.add(app_info);
         String status1 = null;
         String message = "";
@@ -94,11 +106,31 @@ public class APP {
     @RequestMapping(value = "/getAppList.html")
     public String getUserLisy(@RequestParam(value = "querysoftwareName", required = false) String querysoftwareName,
                               @RequestParam(value = "queryAPKName", required = false) String queryAPKName,
+                              @RequestParam(value = "flatformId", required = false) String flatformId,
+                              @RequestParam(value = "categoryLevel1", required = false) String categoryLevel1,
+                              @RequestParam(value = "categoryLevel2", required = false) String categoryLevel2,
+                              @RequestParam(value = "categoryLevel3", required = false) String categoryLevel3,
                               @RequestParam(value = "pageIndex", required = false) String pageIndex,
                               Model model) {
         System.out.println(querysoftwareName + "-----" + queryAPKName + "-----" + pageIndex + "-----");
         //        转换数据类型
         String _queryAPKName = null;
+        int _flatformId=0;
+        int _categoryLevel1=0;
+        int _categoryLevel2=0;
+        int _categoryLevel3=0;
+        if (flatformId !=null && !flatformId.equals("")){
+            _flatformId =Integer.valueOf(flatformId);
+        }
+        if (categoryLevel1 !=null && !categoryLevel1.equals("")){
+            _categoryLevel1 =Integer.valueOf(categoryLevel1);
+        }
+        if (categoryLevel2 !=null && !categoryLevel2.equals("")){
+            _categoryLevel2 =Integer.valueOf(categoryLevel2);
+        }
+        if (categoryLevel3 !=null && !categoryLevel3.equals("")){
+            _categoryLevel3 =Integer.valueOf(categoryLevel3);
+        }
         List<App_info> appInfoList = null;//查询结果
         //        设置页面的容量
         int pageSize = Constants.pageSize;
@@ -118,7 +150,7 @@ public class APP {
             }
         }
         //        数据的总数量
-        int totalCount = appInfoService.getTotalCount(querysoftwareName, _queryAPKName);
+        int totalCount = appInfoService.getTotalCount(querysoftwareName, _queryAPKName,_flatformId,_categoryLevel1,_categoryLevel2,_categoryLevel3);
         //        计算总页数
         PageSupport pageSupport = new PageSupport();
         pageSupport.setCurrentPageNo(currentPageNo);
@@ -133,7 +165,7 @@ public class APP {
             currentPageNo = totalPageCount;
         }
         //        调用业务层的查询方法 获取数据
-        appInfoList = appInfoService.getAppList(querysoftwareName, _queryAPKName, currentPageNo, pageSize);
+        appInfoList = appInfoService.getAppList(querysoftwareName, _queryAPKName, _flatformId,_categoryLevel1,_categoryLevel2,_categoryLevel3,currentPageNo, pageSize);
         for (App_info item : appInfoList) {
             System.out.println("元素：" + item);
         }
@@ -142,8 +174,16 @@ public class APP {
         model.addAttribute("appInfoList", appInfoList);
         model.addAttribute("querysoftwareName", querysoftwareName);
         model.addAttribute("queryAPKName", queryAPKName);
+        model.addAttribute("flatformId", flatformId);
+        model.addAttribute("categoryLevel1", categoryLevel1);
+        model.addAttribute("categoryLevel2", categoryLevel2);
+        model.addAttribute("categoryLevel3", categoryLevel3);
         System.out.println("=====================================" + querysoftwareName);
         System.out.println("=====================================" + queryAPKName);
+        System.out.println("======================================"+flatformId);
+        System.out.println("======================================"+categoryLevel1);
+        System.out.println("======================================"+categoryLevel2);
+        System.out.println("======================================"+categoryLevel3);
         model.addAttribute("totalPageCount", totalPageCount);
         model.addAttribute("totalCount", totalCount);
         model.addAttribute("currentPageNo", currentPageNo);
@@ -235,7 +275,7 @@ public class APP {
 
         // out.print(JSON.toJSON(ChakanList));
 //        response.sendRedirect("/login/zxzx.html");
-        return "redirect:/app/Shanch.html";
+        return "redirect:/login/Main.html";
     }
 
     //    修改下架为上架操作
@@ -249,7 +289,7 @@ public class APP {
 
         // out.print(JSON.toJSON(ChakanList));
 //        response.sendRedirect("/login/zxzx.html");
-        return "redirect:/app/Shanch.html";
+        return "redirect:/login/Main.html";
     }
 
     //    执行根据id修改操作
@@ -334,9 +374,9 @@ public class APP {
         PrintWriter out = response.getWriter();
         System.out.println("=================根据id 新增版本操作");
         //        调用相关业务
-        System.out.println(appId+""+versionNo+""+versionSize+""+publishStatus);
+        System.out.println("软件ID是"+appId);
         App_version app_version = new App_version();
-        app_version.setId(appId);
+        app_version.setAppId(appId);
         app_version.setVersionNo(versionNo);
         app_version.setVersionSize(versionSize);
         app_version.setPublishStatus(publishStatus);
@@ -360,10 +400,10 @@ public class APP {
     @RequestMapping("/xiugai_xiugai.html")
     public String xiugai_xiugai(@RequestParam Integer id, HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("-------------------------已经进入根据信息查看信息并修改版本信息方法");
-        PrintWriter out = response.getWriter();
 //        调用相关业务
         System.out.println("id是" + id);
         App_info ChakanList = appInfoService.ChakanList(id);
+        PrintWriter out = response.getWriter();
 
         int appId = id;
         System.out.println("根据id查看版本信息 appId是" + appId);
@@ -385,4 +425,33 @@ public class APP {
         return "Xiugai_xiugai";
     }
 
+
+    @RequestMapping(value = "/xiugaiByid.html")
+    public void xiugaiByid(Integer id,
+            Integer softwareSize,
+                           String appInfo,HttpServletRequest request, HttpServletResponse response)throws IOException{
+        PrintWriter out = response.getWriter();
+        System.out.println("已经进入根据id修改-修改信息操作");
+        //        调用相关业务
+        App_info app_info = new App_info();
+        app_info.setId(id);
+        app_info.setSoftwareSize(softwareSize);
+        app_info.setAppInfo(appInfo);
+        System.out.println("==========================软件id是"+id);
+        System.out.println("==========================软件大小是"+softwareSize);
+        System.out.println("==========================软件简介是"+appInfo);
+        boolean r = appInfoService.modifyById(app_info);
+        String status1 = null;
+        String message = "";
+        if (r) {
+            status1 = "1";
+            message = "APP修改成功！";
+        } else {
+            status1 = "0";
+            message = "APP修改失败！";
+        }
+//        json的数据格式 固定格式
+        out.print("[{\"status\":\"" + status1 + "\",\"message\":\"" + message + "\"}]");
+
+    }
 }

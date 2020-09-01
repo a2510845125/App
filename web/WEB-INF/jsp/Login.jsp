@@ -48,6 +48,9 @@
 <script type="text/javascript" src="/statics/js/three.min.js"></script>
 
 <style>
+    #live2dcanvas {
+        border: none !important;
+    }
     * {
         margin: 0;
         padding: 0;

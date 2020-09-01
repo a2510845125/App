@@ -24,6 +24,52 @@
                     <input name="querysoftwareName" type="text" value="${querysoftwareName}">
                     <span>APK名称（唯一）：</span>
                     <input name="queryAPKName" type="text" value="${queryAPKName}">
+                    <span>所属平台</span>
+                    <select id="flatformId" name="flatformId" style="height: 30px;" class="selectpicker">
+                        <option value="0">请选择</option>
+                        <option value="1">手机</option>
+                        <option value="2">平板</option>
+                        <option value="3">通用</option>
+                    </select>
+                    <span>一级分类</span>
+                    <select id="categoryLevel1" name="categoryLevel1" style="height: 30px;" class="selectpicker">
+                        <option value="0">请选择</option>
+                        <option value="1">全部应用</option>
+                        <option value="2">全部游戏</option>
+                    </select>
+                    <span>二级分类</span>
+                    <select id="categoryLevel2" name="categoryLevel2" style="height: 30px;" class="selectpicker">
+                        <option value="0">请选择</option>
+                        <option value="3">系统工具</option>
+                        <option value="4">桌面插件</option>
+                        <option value="5">主题美化</option>
+                        <option value="6">社交聊天</option>
+                        <option value="7">资讯阅读</option>
+                        <option value="8">通讯网络</option>
+                        <option value="9">影音娱乐</option>
+                        <option value="10">摄影图片</option>
+                        <option value="11">生活服务</option>
+                        <option value="12">实用工具</option>
+                        <option value="13">文档商务</option>
+                        <option value="14">金融财经</option>
+                        <option value="15">运动健康</option>
+                        <option value="16">学习教育</option>
+                        <option value="17">旅行交通</option>
+                        <option value="18">购物</option>
+                    </select>
+                    <span>三级分类</span>
+                    <select id="categoryLevel3" name="categoryLevel3" style="height: 30px;" class="selectpicker">
+                        <option value="0">请选择</option>
+                        <option value="30">文件管理</option>
+                        <option value="31">清理优化</option>
+                        <option value="32">安全防护</option>
+                        <option value="33">备份还原</option>
+                        <option value="34">辅助加强</option>
+                        <option value="35">桌面</option>
+                        <option value="36">插件</option>
+                        <option value="37">锁屏</option>
+                        <option value="29">输入法</option>
+                    </select>
                     <input type="hidden" name="pageIndex" value="1"/>
                     <input value="查 询" type="submit" id="searchbutton">
                 </form>
@@ -31,8 +77,8 @@
         </div>
     </div>
     <div class="x_panel tile fixed_height_320 overflow_hidden" style="height: 400px;">
-        <button type="button" class="btn btn-primary"><a style="color: white" href="/app/TiJiao.html">新增APP信息</a></button>
-
+        <button type="button" class="btn btn-primary"><a style="color: white" href="/app/TiJiao.html">新增APP信息</a>
+        </button>
         <div class="x_title" style="border-bottom: 0px solid red">
             <table class="providerTable" cellpadding="0" cellspacing="0">
                 <tr class="firstTr">
@@ -49,34 +95,34 @@
                 </tr>
                 <c:forEach var="app" items="${appInfoList}" varStatus="status">
                     <input id="idd" onclick="iddd(${app.id})" type="hidden" value="${app.id}">
-                    <div>
-                        <tr style="border: 1px solid #e9e9e9;">
-                            <td style="border: 1px solid #e9e9e9;height: 50px;">
+                    <div style="">
+                        <tr style="border: 2px solid #e9e9e9;">
+                            <td style="border: 2px solid #e9e9e9;height: 50px;">
                                 <span style="font-size: 5px">${app.id}</span>
                             </td>
-                            <td style="border: 1px solid #e9e9e9;height: 50px;">
+                            <td style="border: 2px solid #e9e9e9;height: 50px;">
                                 <span style="font-size: 5px">${app.softwareName}</span>
                             </td>
-                            <td style="border: 1px solid #e9e9e9;height: 50px;">
+                            <td style="border: 2px solid #e9e9e9;height: 50px;">
                                 <span style="font-size: 5px">${app.APKName }</span>
                             </td>
-                            <td style="border: 1px solid #e9e9e9;height: 50px;">
+                            <td style="border: 2px solid #e9e9e9;height: 50px;">
                                 <span style="font-size: 5px">${app.softwareSize }</span>
                             </td>
                             <td style="border: 1px solid #e9e9e9;height: 50px;">
-                                <span style="font-size: 5px">暂时</span>
+                                <span style="font-size: 5px">${app.categoryLevel1Name}>${app.categoryLevel2Name}>${app.categoryLevel3Name}</span>
                             </td>
-                            <td style="border: 1px solid #e9e9e9;height: 50px;">
-                                <span style="font-size: 5px">${app.flatformId }</span>
+                            <td style="border: 2px solid #e9e9e9;height: 50px;">
+                                <span style="font-size: 5px">${app.flatformName }</span>
                             </td>
-                            <td style="border: 1px solid #e9e9e9;height: 50px;">
-                                <span style="font-size: 5px">${app.status }</span>
+                            <td style="border: 2px solid #e9e9e9;height: 50px;">
+                                <span style="font-size: 5px">${app.statusName }</span>
                             </td>
-                            <td style="border: 1px solid #e9e9e9;height: 50px;">
+                            <td style="border: 2px solid #e9e9e9;height: 50px;">
                                 <span style="font-size: 5px">${app.downloads }</span>
                             </td>
-                            <td style="border: 1px solid #e9e9e9;height: 50px;">
-                                <span style="font-size: 5px">${app.versionId }</span>
+                            <td style="border: 2px solid #e9e9e9;height: 50px;">
+                                <span style="font-size: 5px">${app.versionNo }</span>
                             </td>
                             <td>
                                 <div class="btn-group">
@@ -85,8 +131,26 @@
                                         点击操作 <span
                                             class="caret"></span></button>
                                     <ul class="dropdown-menu">
-                                        <%--1--%>
+                                            <%--1--%>
                                         <c:if test="${app.status==1}">
+                                            <li>
+                                                <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
+                                            </li>
+                                            <li>
+                                                <a href="/app/xiugai_xiugai.html?id=${app.id}">修改版本</a>
+                                            </li>
+                                            <li onclick="xiugai()">
+                                                <a href="/app/xiugaijiben.html?id=${app.id}">修改</a>
+                                            </li>
+                                            <li onclick="shanchu()">
+                                                <a href="/app/Shanchu.html?id=${app.id}">删除</a>
+                                            </li>
+                                            <li onclick="chakan()">
+                                                <a href="/app/chakan.html?id=${app.id}">查看</a>
+                                            </li>
+                                        </c:if>
+                                            <%--2--%>
+                                        <c:if test="${app.status==2}">
                                             <li>
                                                 <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
                                             </li>
@@ -101,96 +165,77 @@
                                                 <a href="/app/Shanchu.html?id=${app.id}">删除</a>
                                             </li>
                                             <li onclick="chakan()">
+
+                                                <a href="/app/chakan.html?id=${app.id}">查看</a>
+                                            </li>
+                                            <li>
+                                                <a href="/app/shangjia.html?id=${app.id}">上架</a>
+                                            </li>
+                                        </c:if>
+                                            <%--3--%>
+                                        <c:if test="${app.status==3}">
+                                            <li>
+                                                <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
+                                            </li>
+                                            <li>
+                                                <a href="/app/xiugai_xiugai.html?id=${app.id}">修改版本</a>
+                                            </li>
+                                            <li onclick="xiugai()">
+                                                <a href="/app/xiugaijiben.html?id=${app.id}">修改</a>
+                                            </li>
+                                            <li onclick="shanchu()">
+                                                <a href="/app/Shanchu.html?id=${app.id}">删除</a>
+                                            </li>
+                                            <li onclick="chakan()">
                                                 <a href="/app/chakan.html?id=${app.id}">查看</a>
                                             </li>
                                         </c:if>
-                                        <%--2--%>
-                                            <c:if test="${app.status==2}">
-                                                <li>
-                                                    <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/app/xiugai_xiugai.html?id=${app.id}">修改版本</a>
-                                                </li>
-                                                <li onclick="xiugai()">
-                                                    <a href="/app/xiugaijiben.html?id=${app.id}">修改</a>
-                                                </li>
-                                                <li onclick="shanchu()">
+                                            <%--4--%>
+                                        <c:if test="${app.status==4}">
+                                            <li>
+                                                <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
+                                            </li>
+                                            <li>
+                                                <a href="/app/xiugai_xiugai.html?id=${app.id}">修改版本</a>
+                                            </li>
+                                            <li onclick="xiugai()">
+                                                <a href="/app/xiugaijiben.html?id=${app.id}">修改</a>
+                                            </li>
+                                            <li onclick="shanchu()">
 
-                                                    <a href="/app/Shanchu.html?id=${app.id}">删除</a>
-                                                </li>
-                                                <li onclick="chakan()">
+                                                <a href="/app/Shanchu.html?id=${app.id}">删除</a>
+                                            </li>
+                                            <li onclick="chakan()">
 
-                                                    <a href="/app/chakan.html?id=${app.id}">查看</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/app/shangjia.html?id=${app.id}">上架</a>
-                                                </li>
-                                            </c:if>
-                                        <%--3--%>
-                                            <c:if test="${app.status==3}">
-                                                <li>
-                                                    <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/app/xiugai_xiugai.html?id=${app.id}">修改版本</a>
-                                                </li>
-                                                <li onclick="xiugai()">
-                                                    <a href="/app/xiugaijiben.html?id=${app.id}">修改</a>
-                                                </li>
-                                                <li onclick="shanchu()">
-                                                    <a href="/app/Shanchu.html?id=${app.id}">删除</a>
-                                                </li>
-                                                <li onclick="chakan()">
-                                                    <a href="/app/chakan.html?id=${app.id}">查看</a>
-                                                </li>
-                                            </c:if>
-                                        <%--4--%>
-                                            <c:if test="${app.status==4}">
-                                                <li>
-                                                    <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/app/xiugai_xiugai.html?id=${app.id}">修改版本</a>
-                                                </li>
-                                                <li onclick="xiugai()">
-                                                    <a href="/app/xiugaijiben.html?id=${app.id}">修改</a>
-                                                </li>
-                                                <li onclick="shanchu()">
+                                                <a href="/app/chakan.html?id=${app.id}">查看</a>
+                                            </li>
+                                            <li>
+                                                <a href="/app/xiajia.html?id=${app.id}">下架</a>
+                                            </li>
+                                        </c:if>
+                                            <%--5--%>
+                                        <c:if test="${app.status==5}">
+                                            <li>
+                                                <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
+                                            </li>
+                                            <li>
+                                                <a href="/app/xiugai_xiugai.html?id=${app.id}">修改版本</a>
+                                            </li>
+                                            <li onclick="xiugai()">
+                                                <a href="/app/xiugaijiben.html?id=${app.id}">修改</a>
+                                            </li>
+                                            <li onclick="shanchu()">
 
-                                                    <a href="/app/Shanchu.html?id=${app.id}">删除</a>
-                                                </li>
-                                                <li onclick="chakan()">
+                                                <a href="/app/Shanchu.html?id=${app.id}">删除</a>
+                                            </li>
+                                            <li onclick="chakan()">
 
-                                                    <a href="/app/chakan.html?id=${app.id}">查看</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/app/xiajia.html?id=${app.id}">下架</a>
-                                                </li>
-                                            </c:if>
-                                        <%--5--%>
-                                            <c:if test="${app.status==5}">
-                                                <li>
-                                                    <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/app/xiugai_xiugai.html?id=${app.id}">修改版本</a>
-                                                </li>
-                                                <li onclick="xiugai()">
-                                                    <a href="/app/xiugaijiben.html?id=${app.id}">修改</a>
-                                                </li>
-                                                <li onclick="shanchu()">
-
-                                                    <a href="/app/Shanchu.html?id=${app.id}">删除</a>
-                                                </li>
-                                                <li onclick="chakan()">
-
-                                                    <a href="/app/chakan.html?id=${app.id}">查看</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/app/shangjia.html?id=${app.id}">上架</a>
-                                                </li>
-                                            </c:if>
+                                                <a href="/app/chakan.html?id=${app.id}">查看</a>
+                                            </li>
+                                            <li>
+                                                <a href="/app/shangjia.html?id=${app.id}">上架</a>
+                                            </li>
+                                        </c:if>
                                     </ul>
                                 </div>
                             </td>
@@ -227,9 +272,10 @@
 <%--}--%>
 <%--}--%>
 <%--</script>--%>
+
 <script>
-    function  iddd(id) {
-        alert("当前id是"+id)
+    function iddd(id) {
+        alert("当前id是" + id)
     }
 </script>
 <style>

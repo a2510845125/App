@@ -28,10 +28,17 @@ public interface AppInfoService {
 //                               @Param(value = "flatformId") Integer queryFlatformId,
 //                               @Param(value = "devId") Integer devId)throws Exception;
 
-    List<App_info> getAppList(String softwareName, String APKName, Integer currentPageNo, Integer pageSize);
+    List<App_info> getAppList(String softwareName,
+                              String APKName,
+                              Integer flatformId,
+                              Integer categoryLevel1,
+                              Integer categoryLevel2,
+                              Integer categoryLevel3,
+                              Integer currentPageNo,
+                              Integer pageSize);
 
     //根据用户名和条数查询总条数
-    int getTotalCount(String softwareName, String APKName);
+    int getTotalCount(String softwareName, String APKName,Integer flatformId,Integer categoryLevel1,Integer categoryLevel2,Integer categoryLevel3);
 
 
     //    ----------------------------------------添加
@@ -47,14 +54,16 @@ public interface AppInfoService {
     List<App_version> ChakanBanben(@Param("appId") Integer appId);
 
     //   修改上架 为 下架 操作
-    App_info getShangJiaById(@Param("id") Integer id);
+    boolean getShangJiaById(@Param("id") Integer id);
 
     //    修改 下架 为 上架
-    App_info getXiaJiaById(@Param("id") Integer id);
+    boolean getXiaJiaById(@Param("id") Integer id);
 
     //    根据id修改信息
     boolean modifyById(App_info app_info);
 
     //    根据id新增版本
     boolean addByid(App_version app_version);
+    //    根据id修改-修改版本
+     boolean xiugaiByid(App_info app_info)throws Exception;
 }

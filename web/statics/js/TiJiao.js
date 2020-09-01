@@ -1,6 +1,6 @@
 //APP的添加功能
 function Tianjia_one() {
-    alert("学生的添加功能")
+
     var softwareName = $("input[name='softwareName']").val();
     var APKName = $("input[name='APKName']").val();
     var supportROM = $("input[name='supportROM']").val();
@@ -9,6 +9,14 @@ function Tianjia_one() {
     var downloads = $("input[name='downloads']").val();
     var appInfo = $("input[name='appInfo']").val();
     var status = $("input[name='status']").val();
+    var categoryLevel1 = $('#categoryLevel1 option:selected') .val();
+    var flatformId = $('#flatformId option:selected') .val();
+    var categoryLevel2 = $('#categoryLevel2 option:selected') .val();
+    var categoryLevel3 = $('#categoryLevel3 option:selected') .val();
+    alert("一级菜单的值是"+categoryLevel1)
+    alert("所属平台"+flatformId)
+    alert("二级菜单"+categoryLevel2)
+    alert("三级菜单"+categoryLevel3)
     //var data = "userName="+userName;+"email="+email;
     var data = {
         "softwareName": softwareName,
@@ -18,9 +26,12 @@ function Tianjia_one() {
         "softwareSize": softwareSize,
         "downloads": downloads,
         "appInfo": appInfo,
-        "status": status
+        "status": status,
+        "categoryLevel1": categoryLevel1,
+        "flatformId": flatformId,
+        "categoryLevel2": categoryLevel2,
+        "categoryLevel3": categoryLevel3
     };
-    alert(status);
     $.ajax({
         url: "/app/doAddAPP.html",
         method: "post",

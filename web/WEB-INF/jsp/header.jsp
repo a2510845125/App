@@ -39,7 +39,7 @@
                 <!-- menu profile quick info -->
                 <div class="profile">
                     <div class="profile_pic">
-                        <img src="/statics/images/img.jpg" alt="..." class="img-circle profile_img">
+                        <img src="/statics/images/u=1363261373,2237465736&fm=26&gp=0%20(1).jpg" alt="..." class="img-circle profile_img">
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>

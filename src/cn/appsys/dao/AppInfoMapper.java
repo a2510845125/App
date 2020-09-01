@@ -12,11 +12,23 @@ public interface AppInfoMapper {
 //    <!--根据条件获取用户信息的列表-->
     List<App_info> getAppList(@Param("softwareName") String softwareName,
                               @Param("APKName") String APKName,
+                              @Param("flatformId") Integer flatformId,
+                              @Param("categoryLevel1") Integer categoryLevel1,
+                              @Param("categoryLevel2") Integer categoryLevel2,
+                              @Param("categoryLevel3") Integer categoryLevel3,
                               @Param("from") Integer from,
                               @Param("pageSize") Integer pageSize);
 
     //分页
-    int getTotalCount(@Param("softwareName") String softwareName, @Param("APKName") String APKName);
+    int getTotalCount(
+            @Param("softwareName") String softwareName,
+            @Param("APKName") String APKName,
+            @Param("flatformId") Integer flatformId,
+            @Param("categoryLevel1") Integer categoryLevel1,
+            @Param("categoryLevel2") Integer categoryLevel2,
+            @Param("categoryLevel3") Integer categoryLevel3
+
+            );
 
 
     //    ----------------------------------------------添加1
@@ -32,16 +44,18 @@ public interface AppInfoMapper {
     List<App_version> ChakanBanben(@Param("appId") Integer appId);
 
     //   修改上架 为 下架 操作
-    App_info getShangJiaById(@Param("id") Integer id);
+    int getShangJiaById(@Param("id") Integer id);
 
     //    修改 下架 为 上架
-    App_info getXiaJiaById(@Param("id") Integer id);
+    int getXiaJiaById(@Param("id") Integer id);
 
     //    根据id用户修改
     int modifyById(App_info app_info);
 
     //    根据id新增版本
     int addByid(App_version app_version);
+//    根据id修改-修改版本
+    int xiugaiByid(App_info app_info);
 }
 
 
