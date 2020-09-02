@@ -95,6 +95,21 @@ public class AppInfoServicelmpl implements cn.appsys.service.AppInfoService {
         }
     }
 
+    //    在增加id的方法中查询id 然后调用修改
+    @Override
+    public App_version Cha(Integer appId) {
+        return mapper.Cha(appId);
+    }
+//修改
+    @Override
+    public boolean Cha2(App_info app_info) {
+        if (mapper.Cha2(app_info) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     //    根据id修改-修改版本
     @Override
     public boolean xiugaiByid(App_info app_info) throws Exception {

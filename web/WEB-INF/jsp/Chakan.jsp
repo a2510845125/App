@@ -132,10 +132,11 @@
                     <span>${as.publishStatusName}</span>
                 </div>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
-                    <span>
-                        <%--${as.apkFileName}--%>
-                        暂时
-                    </span>
+                  <div style="width: 50px;">
+                        <span>
+                                ${as.apkFileName}
+                        </span>
+                  </div>
                 </div>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
                     <span>${as.creationDate}</span>

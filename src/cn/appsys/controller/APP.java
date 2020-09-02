@@ -373,6 +373,8 @@ public class APP {
                         HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
         System.out.println("=================根据id 新增版本操作");
+        System.out.println("最新版本"+versionNo);
+        System.out.println("软件大小"+versionSize);
         //        调用相关业务
         System.out.println("软件ID是"+appId);
         App_version app_version = new App_version();
@@ -381,10 +383,32 @@ public class APP {
         app_version.setVersionSize(versionSize);
         app_version.setPublishStatus(publishStatus);
         app_version.setCreationDate(new Date());
+        System.out.println("---------------------------进入APP更换最新ID的操作"+appId);
+
+
+//        App_info app_info = new App_info();
+//        app_info.setVersionId(app_version1.getId());
+//        app_info.setId(app_version1.getAppId());
+
+
+//        App_version app_version2=new App_version();
+//        app_version2.setAppId(appId);
+//        app_version2.setId();
+
+
+
         boolean r = appInfoService.addByid(app_version);
         String status1 = null;
         String message = "";
         if (r) {
+            App_version app_version1=appInfoService.Cha(appId);
+            App_info app_info1 = new App_info();
+            app_info1.setId(app_version1.getAppId());
+            System.out.println("====="+app_version1.getAppId());
+
+            app_info1.setVersionId(app_version1.getId());
+            System.out.println("====="+app_version1.getId());
+            appInfoService.Cha2(app_info1);
             status1 = "1";
             message = "添加成功！";
         } else {

@@ -64,6 +64,12 @@ public interface AppInfoService {
 
     //    根据id新增版本
     boolean addByid(App_version app_version);
+
+    //    在增加id的方法中查询id 然后调用修改
+    App_version Cha(@Param("appId") Integer appId);
+    //    修改
+    boolean Cha2(App_info app_info);
+
     //    根据id修改-修改版本
      boolean xiugaiByid(App_info app_info)throws Exception;
 }

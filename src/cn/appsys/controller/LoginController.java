@@ -36,6 +36,11 @@ public String Login(){
     public String yesLogin(){
         return "main";
     }
+    //    超级管理员登录登录成功后跳转
+    @RequestMapping("/Main2.html")
+    public String yesLogin2(){
+        return "admin";
+    }
     //    管理员用户登录跳转
     @RequestMapping("/asd.html")
     public String BackendLogin(){
@@ -72,8 +77,8 @@ public String Login(){
         if (backend_user != null) {
 //            说明用户登录成功ChakanList
             System.out.println("管理员登录成功");
-            session.setAttribute(Constants.USER_SESSION,backend_user);
-            return "redirect:/login/Main.html";
+            session.setAttribute(Constants.ADMIN_SESSION,backend_user);
+            return "redirect:/login/Main2.html";
         } else {
 //            登录失败
             request.setAttribute("error","用户名不正确");

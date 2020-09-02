@@ -28,7 +28,7 @@ public interface AppInfoMapper {
             @Param("categoryLevel2") Integer categoryLevel2,
             @Param("categoryLevel3") Integer categoryLevel3
 
-            );
+    );
 
 
     //    ----------------------------------------------添加1
@@ -54,7 +54,12 @@ public interface AppInfoMapper {
 
     //    根据id新增版本
     int addByid(App_version app_version);
-//    根据id修改-修改版本
+
+    //    在增加id的方法中查询id 然后调用修改
+    App_version Cha(@Param("appId") Integer appId);
+//    修改
+    int Cha2(App_info app_info);
+    //    根据id修改-修改版本
     int xiugaiByid(App_info app_info);
 }
 

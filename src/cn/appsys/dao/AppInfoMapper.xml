@@ -49,24 +49,25 @@
 
 
     <select id="getAppList" resultType="App_info">
---         select * from app_info
+        -- select * from app_info
         select a.id, a.softwareName,a.APKName,a.supportROM,a.softwareSize,a.devId,
         (select devName from dev_user where id = a.devId) as devName,
         a.status,
-        (select valueName from data_dictionary d where  a.status=d.valueId AND d.typeCode='APP_STATUS') as statusName,
+        (select valueName from data_dictionary d where a.status=d.valueId AND d.typeCode='APP_STATUS') as statusName,
         a.flatformId,
-        (select valueName from data_dictionary d where  a.flatformId=d.valueId AND d.typeCode='APP_FLATFORM') as flatformName,
+        (select valueName from data_dictionary d where a.flatformId=d.valueId AND d.typeCode='APP_FLATFORM') as
+        flatformName,
         a.categoryLevel1,
-        (select categoryName from app_category c where  c.id=a.categoryLevel1) as categoryLevel1Name,
+        (select categoryName from app_category c where c.id=a.categoryLevel1) as categoryLevel1Name,
         a.categoryLevel2,
-        (select categoryName from app_category c where  c.id=a.categoryLevel2) as categoryLevel2Name,
+        (select categoryName from app_category c where c.id=a.categoryLevel2) as categoryLevel2Name,
         a.categoryLevel3,
-        (select categoryName from app_category c where  c.id=a.categoryLevel3) as categoryLevel3Name,
+        (select categoryName from app_category c where c.id=a.categoryLevel3) as categoryLevel3Name,
         a.downloads,
         a.onSaleDate,
         a.versionId,
         (select v.versionNo from app_version v where v.id=a.versionId ) as versionNo
-        from  app_info a
+        from app_info a
         <trim prefix="where" prefixOverrides="and|or">
             <if test="softwareName!=null and softwareName!=''">
                 and softwareName like CONCAT('%',#{softwareName},'%')
@@ -172,12 +173,23 @@ order by v.creationDate DESC
     <!--根据id 新增版本-->
     <!--返回主键类型被自动强转为Long-->
     <insert id="addByid" parameterType="App_version">
-		insert into app_version (appId,versionNo,versionSize,publishStatus,creationDate)
-				values(#{appId},#{versionNo},#{versionInfo},#{publishStatus},#{creationDate})
+		insert into app_version (appId,versionNo,versionSize,versionInfo,publishStatus,creationDate)
+				values(#{appId},#{versionNo},#{versionSize},#{versionInfo},#{publishStatus},#{creationDate})
 	</insert>
+    <!--//    在增加id的方法中查询id 然后调用修改-->
+    <select id="Cha" resultType="App_version">
+        	SELECT * FROM app_version where id=( SELECT MAX(id) FROM app_version where appId=#{appId})
+    </select>
+    <!--//    修改-->
+    <update id="Cha2" parameterType="App_info">
+          update app_info set
+            versionId=#{versionId} where id=#{id}
+
+    </update>
+
     <!--//    根据id修改-修改版本-->
     <update id="xiugaiByid" parameterType="App_info">
-           update app_info
+        update app_info
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
             <if test="softwareSize != null">softwareSize=#{softwareSize},</if>
             <if test="appInfo != null">appInfo=#{appInfo}</if>
