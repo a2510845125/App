@@ -26,6 +26,10 @@ public class LoginController {
 public String Login(){
     return "Login";
 }
+    @RequestMapping("/adadad12.html")
+    public String adadad(){
+        return "shenhe";
+    }
 //    开发者登录跳转
     @RequestMapping("/DevLogin.html")
     public String DevLogin(){

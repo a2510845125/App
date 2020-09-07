@@ -68,6 +68,7 @@
         a.versionId,
         (select v.versionNo from app_version v where v.id=a.versionId ) as versionNo
         from app_info a
+
         <trim prefix="where" prefixOverrides="and|or">
             <if test="softwareName!=null and softwareName!=''">
                 and softwareName like CONCAT('%',#{softwareName},'%')
@@ -81,13 +82,22 @@
             <if test="categoryLevel1!=null and categoryLevel1!=0">
                 and categoryLevel1 =#{categoryLevel1}
             </if>
+            <if test="categoryLevel2!=null and categoryLevel2!=0">
+                and categoryLevel2 =#{categoryLevel2}
+            </if>
+            <if test="categoryLevel3!=null and categoryLevel3!=0">
+                and categoryLevel3 =#{categoryLevel3}
+            </if>
+            and modifyBy=#{modifyBy}
         </trim>
         limit #{from},#{pageSize}
+
     </select>
 
     <!--查询总条数-->
     <select id="getTotalCount" resultType="int">
         select COUNT(1) from app_info
+
         <trim prefix="where" prefixOverrides="and | or">
             <if test="softwareName!=null and softwareName!=''">
                 and softwareName like CONCAT('%',#{softwareName},'%')
@@ -101,16 +111,98 @@
             <if test="categoryLevel1!=null and categoryLevel1!=0">
                 and categoryLevel1 =#{categoryLevel1}
             </if>
+            <if test="categoryLevel2!=null and categoryLevel2!=0">
+                and categoryLevel2 =#{categoryLevel2}
+            </if>
+            <if test="categoryLevel3!=null and categoryLevel3!=0">
+                and categoryLevel3 =#{categoryLevel3}
+            </if>
+           and modifyBy=#{modifyBy}
         </trim>
+
+    </select>
+<!--超级管理员-->
+    <select id="getAppList2" resultType="App_info">
+        -- select * from app_info
+        select a.id, a.softwareName,a.APKName,a.supportROM,a.softwareSize,a.devId,
+        (select devName from dev_user where id = a.devId) as devName,
+        a.status,
+        (select valueName from data_dictionary d where a.status=d.valueId AND d.typeCode='APP_STATUS') as statusName,
+        a.flatformId,
+        (select valueName from data_dictionary d where a.flatformId=d.valueId AND d.typeCode='APP_FLATFORM') as
+        flatformName,
+        a.categoryLevel1,
+        (select categoryName from app_category c where c.id=a.categoryLevel1) as categoryLevel1Name,
+        a.categoryLevel2,
+        (select categoryName from app_category c where c.id=a.categoryLevel2) as categoryLevel2Name,
+        a.categoryLevel3,
+        (select categoryName from app_category c where c.id=a.categoryLevel3) as categoryLevel3Name,
+        a.downloads,
+        a.onSaleDate,
+        a.versionId,
+        (select v.versionNo from app_version v where v.id=a.versionId ) as versionNo
+        from app_info a
+        where status=1
+            <if test="softwareName!=null and softwareName!=''">
+                and softwareName like CONCAT('%',#{softwareName},'%')
+            </if>
+            <if test="APKName !=null and APKName !='' ">
+                and APKName =#{APKName}
+            </if>
+            <if test="flatformId!=null and flatformId!=0">
+                and flatformId =#{flatformId}
+            </if>
+            <if test="categoryLevel1!=null and categoryLevel1!=0">
+                and categoryLevel1 =#{categoryLevel1}
+            </if>
+        <if test="categoryLevel2!=null and categoryLevel2!=0">
+            and categoryLevel2 =#{categoryLevel2}
+        </if>
+        <if test="categoryLevel3!=null and categoryLevel3!=0">
+            and categoryLevel3 =#{categoryLevel3}
+        </if>
+        limit #{from},#{pageSize}
     </select>
 
+    <!--查询总条数-->
+    <select id="getTotalCount2" resultType="int">
+        select COUNT(1) from app_info
+       where status=1
+            <if test="softwareName!=null and softwareName!=''">
+                and softwareName like CONCAT('%',#{softwareName},'%')
+            </if>
+            <if test="APKName!=null and APKName!=''">
+                and APKName =#{APKName}
+            </if>
+            <if test="APKName!=null and APKName!=0">
+                and flatformId =#{flatformId}
+            </if>
+            <if test="categoryLevel1!=null and categoryLevel1!=0">
+                and categoryLevel1 =#{categoryLevel1}
+            </if>
+        <if test="categoryLevel2!=null and categoryLevel2!=0">
+            and categoryLevel2 =#{categoryLevel2}
+        </if>
+        <if test="categoryLevel3!=null and categoryLevel3!=0">
+            and categoryLevel3 =#{categoryLevel3}
+        </if>
+    </select>
     <!--============================================================添加-->
+    <!--<insert id="addAPP" parameterType="App_info">-->
+        <!--insert into app_info (-->
+      <!--softwareName,APKName,supportROM,-->
+					<!--interfaceLanguage,softwareSize,downloads,appInfo,status,flatformId,categoryLevel1,categoryLevel2,categoryLevel3)-->
+					<!--values(#{softwareName},#{APKName},#{supportROM},#{interfaceLanguage},-->
+					<!--#{softwareSize},#{downloads},#{appInfo},#{status},#{flatformId},#{categoryLevel1},#{categoryLevel2},#{categoryLevel3})-->
+    <!--</insert>-->
     <insert id="addAPP" parameterType="App_info">
         insert into app_info (
       softwareName,APKName,supportROM,
-					interfaceLanguage,softwareSize,downloads,appInfo,status,flatformId,categoryLevel1,categoryLevel2,categoryLevel3)
+					interfaceLanguage,softwareSize,downloads,appInfo,status,flatformId,categoryLevel1,
+					categoryLevel2,categoryLevel3,logoPicPath,logoLocPath,modifyBy)
 					values(#{softwareName},#{APKName},#{supportROM},#{interfaceLanguage},
-					#{softwareSize},#{downloads},#{appInfo},#{status},#{flatformId},#{categoryLevel1},#{categoryLevel2},#{categoryLevel3})
+					#{softwareSize},#{downloads},#{appInfo},#{status},#{flatformId},#{categoryLevel1},
+					#{categoryLevel2},#{categoryLevel3},#{logoPicPath},#{logoLocPath},#{modifyBy})
     </insert>
     <!--==========================================================根据id删除APP-->
     <delete id="getdelete" parameterType="App_info">
@@ -119,7 +211,7 @@
     </delete>
     <!--根据id查看详情-->
     <select id="ChakanList" resultType="App_info">
-         select a.id, a.softwareName,a.APKName,a.supportROM,a.softwareSize,a.devId,a.interfaceLanguage,a.appInfo,
+            select a.id, a.softwareName,a.APKName,a.supportROM,a.softwareSize,a.devId,a.interfaceLanguage,a.appInfo,a.logoLocPath,a.logoPicPath,
         (select devName from dev_user where id = a.devId) as devName,
         a.status,
         (select valueName from data_dictionary d where  a.status=d.valueId AND d.typeCode='APP_STATUS') as statusName,
@@ -140,6 +232,14 @@
     </select>
     <!--根据id查看版本等信息-->
     <select id="ChakanBanben" resultType="App_version">
+        	select v.*,
+			(select a.softwareName from app_info a where a.id=v.appId ) as appName,
+			(select valueName from data_dictionary d where  v.publishStatus=d.valueId AND d.typeCode='PUBLISH_STATUS') as publishStatusName
+			from  app_version  v
+	WHERE v.appId = #{appId}
+order by v.creationDate DESC
+    </select>
+    <select id="ChakanBanben2" resultType="App_version">
         	select v.*,
 			(select a.softwareName from app_info a where a.id=v.appId ) as appName,
 			(select valueName from data_dictionary d where  v.publishStatus=d.valueId AND d.typeCode='PUBLISH_STATUS') as publishStatusName
@@ -173,8 +273,8 @@ order by v.creationDate DESC
     <!--根据id 新增版本-->
     <!--返回主键类型被自动强转为Long-->
     <insert id="addByid" parameterType="App_version">
-		insert into app_version (appId,versionNo,versionSize,versionInfo,publishStatus,creationDate)
-				values(#{appId},#{versionNo},#{versionSize},#{versionInfo},#{publishStatus},#{creationDate})
+		insert into app_version (appId,versionNo,versionSize,versionInfo,publishStatus,creationDate,modifyBy,modifyDate)
+				values(#{appId},#{versionNo},#{versionSize},#{versionInfo},#{publishStatus},#{creationDate},#{modifyBy},#{modifyDate})
 	</insert>
     <!--//    在增加id的方法中查询id 然后调用修改-->
     <select id="Cha" resultType="App_version">
@@ -194,5 +294,15 @@ order by v.creationDate DESC
             <if test="softwareSize != null">softwareSize=#{softwareSize},</if>
             <if test="appInfo != null">appInfo=#{appInfo}</if>
         </trim>
+    </update>
+    <!--审核通过-->
+    <update id="tongguo" parameterType="App_info">
+          update app_info set status=2
+        where id=#{id}
+    </update>
+    <!--审核不通过-->
+    <update id="butongguo" parameterType="App_info">
+          update app_info set status=3
+        where id=#{id}
     </update>
 </mapper>

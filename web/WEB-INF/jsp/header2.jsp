@@ -30,11 +30,11 @@
     <div class="main_container">
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
-                <div class="navbar nav_title" style="border: 0;">
-                    <a href="/login/Main.html" class="site_title"><i class="fa fa-paw"></i> <span>APP管理系统</span></a>
-                </div>
+                <%--<div class="navbar nav_title" style="border: 0;">--%>
+                    <%--&lt;%&ndash;<a href="/login/Main.html" class="site_title"><i class="fa fa-coffee"></i> <span>APP管理系统</span></a>&ndash;%&gt;--%>
+                <%--</div>--%>
 
-                <div class="clearfix"></div>
+                <%--<div class="clearfix"></div>--%>
 
                 <!-- menu profile quick info -->
                 <div class="profile">
@@ -57,7 +57,7 @@
                         <ul class="nav side-menu">
                             <li><a><i class="fa fa-home"></i> APP账户管理 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="index.html">APP审核</a></li>
+                                    <li><a href="/app/getAppList2.html">APP审核</a></li>
                                     <li><a href="index2.html">广告推广</a></li>
                                 </ul>
                             </li>
@@ -112,15 +112,7 @@
 
                 <!-- /menu footer buttons -->
                 <div class="sidebar-footer hidden-small">
-                    <a data-toggle="tooltip" data-placement="top" title="Settings">
-                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Lock">
-                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                    </a>
+
                     <a data-toggle="tooltip" data-placement="top" title="Logout" href="/login/zxzx.html">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                     </a>
@@ -140,7 +132,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="/statics/images/img.jpg" alt="">${userSession.devName}
+                                <img src="/statics/images/u=1080826656,1945724757&fm=26&gp=0.jpg" alt="">${userSession.devName}
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -216,7 +208,7 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
+        <div class="right_col" role="main" style="min-height: 391px;">
 
 </body>
 </html>

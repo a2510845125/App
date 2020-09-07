@@ -7,6 +7,7 @@
     <h3>
         欢迎您：${userSession.devName}
         用户id：${userSession.id}
+        用户id：${userSession.modifyBy}
     </h3>   <div class="report">
     <script>
         var weekDayLabels = new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");

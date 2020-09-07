@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="header.jsp" %>
+<%@include file="header2.jsp" %>
 <div class="page-title">
     <div class="report">
         <script>
@@ -9,16 +9,15 @@
             var year = now.getFullYear();
             var month = now.getMonth() + 1;
             var day = now.getDate()
-            var currentime = '<span style="color: black" class="special">当前时间：' + year + '年' + month + '月' + day + '日' + weekDayLabels[now.getDay()] + '</span><br>'
+            var currentime = '<span  style="color: black" class="special">当前时间：' + year + '年' + month + '月' + day + '日' + weekDayLabels[now.getDay()] + '</span><br>'
             document.write(currentime)
         </script>
     </div>
-
     <div class="x_panel tile fixed_height_320 overflow_hidden" style="height: 100px;">
         <div class="x_title">
             <p style="color: black">App信息管理维护 ${userSession.devName}，您可以通过搜索筛选框对App的信息进行修改，删除等操作 ^_^</p>
             <div class="clearfix">
-                <form method="post" action="${pageContext.request.contextPath }/app/getAppList.html?modifyBy=${userSession.modifyBy}">
+                <form method="post" action="${pageContext.request.contextPath }/app/getAppList2.html">
                     <span style="color: black">软件名称：</span>
                     <input style="  border: 1px solid #e5e5e5;
     outline: none;" name="querysoftwareName" type="text" value="${querysoftwareName}">
@@ -76,9 +75,7 @@
                         <option value="29">输入法</option>
                     </select>
                     <input type="hidden" name="pageIndex" value="1"/>
-                    <%--<input value="" type="submit" id="searchbutton">--%>
-                    <button type="submit"  id="searchbutton" class="btn btn-default btn-xs">查询</button>
-                    <%--<button type="button" class="btn btn-default btn-sm">Medium Button</button>--%>
+                    <input value="查 询" type="submit" id="searchbutton">
                 </form>
             </div>
         </div>
@@ -130,117 +127,11 @@
                             </td>
                             <td style=" border:1px solid #edf5ec;background:#fafcfd;height: 50px;">
                                 <div style="margin-left: 20px" class="btn-group">
-                                    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"
-                                            type="button">
-                                        点击操作 <span
-                                            class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                            <%--1--%>
-                                        <c:if test="${app.status==1}">
-                                            <li>
-                                                <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
-                                            </li>
-                                            <li>
-                                                <a href="/app/xiugai_xiugai.html?id=${app.id}">修改版本</a>
-                                            </li>
-                                            <li onclick="xiugai()">
-                                                <a href="/app/xiugaijiben.html?id=${app.id}">修改</a>
-                                            </li>
-                                            <li onclick="shanchu()">
-                                                <a href="/app/Shanchu.html?id=${app.id}">删除</a>
-                                            </li>
-                                            <li onclick="chakan()">
-                                                <a href="/app/chakan.html?id=${app.id}">查看</a>
-                                            </li>
-                                        </c:if>
-                                            <%--2--%>
-                                        <c:if test="${app.status==2}">
-                                            <li>
-                                                <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
-                                            </li>
-                                            <li>
-                                                <a href="/app/xiugai_xiugai.html?id=${app.id}">修改版本</a>
-                                            </li>
-                                            <li onclick="xiugai()">
-                                                <a href="/app/xiugaijiben.html?id=${app.id}">修改</a>
-                                            </li>
-                                            <li onclick="shanchu()">
-
-                                                <a href="/app/Shanchu.html?id=${app.id}">删除</a>
-                                            </li>
-                                            <li onclick="chakan()">
-
-                                                <a href="/app/chakan.html?id=${app.id}">查看</a>
-                                            </li>
-                                            <li>
-                                                <a href="/app/shangjia.html?id=${app.id}">上架</a>
-                                            </li>
-                                        </c:if>
-                                            <%--3--%>
-                                        <c:if test="${app.status==3}">
-                                            <li>
-                                                <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
-                                            </li>
-                                            <li>
-                                                <a href="/app/xiugai_xiugai.html?id=${app.id}">修改版本</a>
-                                            </li>
-                                            <li onclick="xiugai()">
-                                                <a href="/app/xiugaijiben.html?id=${app.id}">修改</a>
-                                            </li>
-                                            <li onclick="shanchu()">
-                                                <a href="/app/Shanchu.html?id=${app.id}">删除</a>
-                                            </li>
-                                            <li onclick="chakan()">
-                                                <a href="/app/chakan.html?id=${app.id}">查看</a>
-                                            </li>
-                                        </c:if>
-                                            <%--4--%>
-                                        <c:if test="${app.status==4}">
-                                            <li>
-                                                <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
-                                            </li>
-                                            <li>
-                                                <a href="/app/xiugai_xiugai.html?id=${app.id}">修改版本</a>
-                                            </li>
-                                            <li onclick="xiugai()">
-                                                <a href="/app/xiugaijiben.html?id=${app.id}">修改</a>
-                                            </li>
-                                            <li onclick="shanchu()">
-
-                                                <a href="/app/Shanchu.html?id=${app.id}">删除</a>
-                                            </li>
-                                            <li onclick="chakan()">
-
-                                                <a href="/app/chakan.html?id=${app.id}">查看</a>
-                                            </li>
-                                            <li>
-                                                <a href="/app/xiajia.html?id=${app.id}">下架</a>
-                                            </li>
-                                        </c:if>
-                                            <%--5--%>
-                                        <c:if test="${app.status==5}">
-                                            <li>
-                                                <a href="/app/xinzeng.html?id=${app.id}">新增版本</a>
-                                            </li>
-                                            <li>
-                                                <a href="/app/xiugai_xiugai.html?id=${app.id}">修改版本</a>
-                                            </li>
-                                            <li onclick="xiugai()">
-                                                <a href="/app/xiugaijiben.html?id=${app.id}">修改</a>
-                                            </li>
-                                            <li onclick="shanchu()">
-
-                                                <a href="/app/Shanchu.html?id=${app.id}">删除</a>
-                                            </li>
-                                            <li onclick="chakan()">
-
-                                                <a href="/app/chakan.html?id=${app.id}">查看</a>
-                                            </li>
-                                            <li>
-                                                <a href="/app/shangjia.html?id=${app.id}">上架</a>
-                                            </li>
-                                        </c:if>
-                                    </ul>
+                                    <div class="btn-group">
+                                        <button type="button">
+                                            <a href="/app/chakan2.html?id=${app.id}">审核</a>
+                                        </button>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -249,17 +140,16 @@
             </table>
         </div>
         <div style="width: 280px;background: white;position: absolute ;bottom: 30px;left: 950px">
-          <div style="">
-              <input style="" type="hidden" id="totalPageCount" value="${totalPageCount}"/>
-              <c:import url="rollpage.jsp">
-                  <c:param name="totalCount" value="${totalCount}"/>
-                  <c:param name="currentPageNo" value="${currentPageNo}"/>
-                  <c:param name="totalPageCount" value="${totalPageCount}"/>
-              </c:import>
-          </div>
+            <div style="">
+                <input type="hidden" id="totalPageCount" value="${totalPageCount}"/>
+                <c:import url="rollpage.jsp">
+                    <c:param name="totalCount" value="${totalCount}"/>
+                    <c:param name="currentPageNo" value="${currentPageNo}"/>
+                    <c:param name="totalPageCount" value="${totalPageCount}"/>
+                </c:import>
+            </div>
         </div>
     </div>
-
 </div>
 <%@include file="fooder.jsp" %>
 <script type="text/javascript" src="/statics/js/rollpage.js"></script>
@@ -285,22 +175,5 @@
     }
 </script>
 <style>
-    li {
-        list-style: none; /*去掉小圆点*/
-    }
 
-    .m-wrap {
-
-        background-color: #ffffff;
-        background-image: none !important;
-        filter: none !important;
-        border: 1px solid #e5e5e5;
-        outline: none;
-        height: 25px !important;
-        line-height: 25px;
-    }
-
-    option {
-        border: 1px solid #e5e5e5;
-    }
 </style>

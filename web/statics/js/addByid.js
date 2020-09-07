@@ -5,14 +5,17 @@ function addByid() {
     var versionNo = $("input[name='versionNo']").val();
     var versionSize = $("input[name='versionSize']").val();
     var publishStatus = $("input[name='publishStatus']").val();
+    var modifyBy = $("input[name='modifyBy']").val();
+    alert(modifyBy)
 
     var data = {
         "appId": appId,
         "versionNo": versionNo,
         "versionSize": versionSize,
-        "publishStatus": publishStatus
+        "publishStatus": publishStatus,
+        "modifyBy": modifyBy
     };
-    alert(appId);
+    // alert(appId);
     $.ajax({
         url: "/app/addByid.html",
         method: "post",

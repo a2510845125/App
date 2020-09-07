@@ -5,50 +5,49 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@include file="header.jsp" %>
 <div class="page-title">
-    <h3>你所在的位置是：APP应用管理 > 新增版本</h3>
     <div style="height: 200px;" class="x_panel tile fixed_height_320 overflow_hidden">
         <div class="x_title" style="border-bottom: 0px solid black">
-            <p>历史版本列表</p>
+            <p style="color: black">历史版本列表</p>
             <div style="border: none;" class="col-md-2 col-sm-12 col-xs-12 form-group">
-                <span>软件名称</span>
+                <span style="color: black">软件名称</span>
             </div>
             <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
 
-                <span>版本号</span>
+                <span style="color: black">版本号</span>
             </div>
             <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
 
-                <span>版本大小</span>
+                <span style="color: black">版本大小</span>
             </div>
             <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
 
-                <span>发布状态</span>
+                <span style="color: black">发布状态</span>
             </div>
             <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
 
-                <span>APK文件</span>
+                <span style="color: black">APK文件</span>
             </div>
             <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
 
-                <span>最新更新时间</span>
+                <span style="color: black">最新更新时间</span>
             </div>
             <c:forEach var="as" items="${ChakanBanben}" varStatus="status">
                 <p><br></p>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
-                    <span>${as.appName}</span>
+                    <span style="color: black">${as.appName}</span>
                 </div>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
-                    <span>${as.versionNo}</span>
+                    <span style="color: black">${as.versionNo}</span>
                 </div>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
 
-                    <span>${as.versionSize}M</span>
+                    <span style="color: black">${as.versionSize}M</span>
                 </div>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
-                    <span>${as.publishStatusName}</span>
+                    <span style="color: black">${as.publishStatusName}</span>
                 </div>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
-                    <span>
+                    <span style="color: black">
                         <%--${as.apkFileName}--%>
                         暂时
                     </span>
@@ -57,26 +56,36 @@
                     <%--<span>--%>
                         <%--<fmt:formatDate value="${as.creationDate}" type="date"/>--%>
                     <%--</span>--%>
-                    <span>${as.creationDate}</span>
+                    <span style="color: black">${as.creationDate}</span>
                 </div>
             </c:forEach>
         </div>
     </div>
     <div style="height: 400px;" class="x_panel tile fixed_height_320 overflow_hidden">
         <div class="x_title" style="border-bottom: 0px solid black">
-            <p>新增版本信息</p>
+            <p style="color: black">新增版本信息</p>
             <div class="clearfix">
                 <div class="form-group">
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">当前软件ID :</label>
+                        <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">当前软件ID :</label>
                         <input disabled="disabled" style="width: 300px;" type="text" name="appId" class="form-control"
                                value="${ChakanList.id}">
                     </div>
                 </div>
+                <%--=================================================当前用户ID--%>
+
+
+                <input type="hidden" name="modifyBy" value="${userSession.modifyBy}" required="required"
+
+                       class="form-control col-md-7 col-xs-12">
+
+                <%--================================================结束--%>
+
+
 
                 <div class="form-group">
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">版本号 :</label>
+                        <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">版本号 :</label>
                         <input style="width: 300px;" type="text" name="versionNo" class="form-control" value="">
                     </div>
                 </div>
@@ -84,7 +93,7 @@
                 <div class="form-group">
 
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">版本大小 </label>
+                        <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">版本大小 </label>
                         <input style="width: 300px;" type="text" name="versionSize" class="form-control" value="">
                     </div>
                 </div>
@@ -92,7 +101,7 @@
                 <div class="form-group">
 
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">发布状态 </label>
+                        <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">发布状态 </label>
                         <input disabled="disabled" style="width: 300px;" type="text" name="" class="form-control"
                                value="预发布">
                         <input type="hidden" name="publishStatus" value="1">

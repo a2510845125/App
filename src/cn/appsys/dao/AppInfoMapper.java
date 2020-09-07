@@ -16,6 +16,7 @@ public interface AppInfoMapper {
                               @Param("categoryLevel1") Integer categoryLevel1,
                               @Param("categoryLevel2") Integer categoryLevel2,
                               @Param("categoryLevel3") Integer categoryLevel3,
+                              @Param("modifyBy") Integer modifyBy,
                               @Param("from") Integer from,
                               @Param("pageSize") Integer pageSize);
 
@@ -26,13 +27,32 @@ public interface AppInfoMapper {
             @Param("flatformId") Integer flatformId,
             @Param("categoryLevel1") Integer categoryLevel1,
             @Param("categoryLevel2") Integer categoryLevel2,
-            @Param("categoryLevel3") Integer categoryLevel3
+            @Param("categoryLevel3") Integer categoryLevel3,
+            @Param("modifyBy") Integer modifyBy);
 
+    //超级管理员
+    List<App_info> getAppList2(@Param("softwareName") String softwareName,
+                               @Param("APKName") String APKName,
+                               @Param("flatformId") Integer flatformId,
+                               @Param("categoryLevel1") Integer categoryLevel1,
+                               @Param("categoryLevel2") Integer categoryLevel2,
+                               @Param("categoryLevel3") Integer categoryLevel3,
+                               @Param("from") Integer from,
+                               @Param("pageSize") Integer pageSize);
+
+    //分页
+    int getTotalCount2(
+            @Param("softwareName") String softwareName,
+            @Param("APKName") String APKName,
+            @Param("flatformId") Integer flatformId,
+            @Param("categoryLevel1") Integer categoryLevel1,
+            @Param("categoryLevel2") Integer categoryLevel2,
+            @Param("categoryLevel3") Integer categoryLevel3
     );
 
-
     //    ----------------------------------------------添加1
-    int addAPP(App_info app_info);
+//    int addAPP(App_info app_info);
+    int addAPP(App_info app_info) ;
 
     //            根据id删除APP
     boolean getdelete(Integer id);
@@ -43,6 +63,8 @@ public interface AppInfoMapper {
     //   根据id查看版本信息
     List<App_version> ChakanBanben(@Param("appId") Integer appId);
 
+    App_version ChakanBanben2(@Param("appId") Integer appId);
+
     //   修改上架 为 下架 操作
     int getShangJiaById(@Param("id") Integer id);
 
@@ -50,6 +72,7 @@ public interface AppInfoMapper {
     int getXiaJiaById(@Param("id") Integer id);
 
     //    根据id用户修改
+//    int modifyById(App_info app_info);
     int modifyById(App_info app_info);
 
     //    根据id新增版本
@@ -57,10 +80,23 @@ public interface AppInfoMapper {
 
     //    在增加id的方法中查询id 然后调用修改
     App_version Cha(@Param("appId") Integer appId);
-//    修改
+
+    //    修改
     int Cha2(App_info app_info);
+
     //    根据id修改-修改版本
     int xiugaiByid(App_info app_info);
+
+
+    //    审核通过
+    int tongguo(App_info app_info);
+
+    //    审核不通过
+    int butongguo(App_info app_info);
+//    查询以及分类
+    List<App_info> fenlei1();
+
+
 }
 
 

@@ -1,6 +1,6 @@
 //APP的修改功能
 function xiugai() {
-    alert("APP的修改功能");
+    alert("APP的修改操作");
     var id = $("input[name='id']").val();
     var softwareName = $("input[name='softwareName']").val();
     var APKName = $("input[name='APKName']").val();
@@ -19,8 +19,8 @@ function xiugai() {
         "softwareSize": softwareSize,
         "appInfo": appInfo
     };
-    alert(softwareName);
-    alert(id);
+    // alert(softwareName);
+    // alert(id);
     $.ajax({
         url: "/app/xiugai.html",
         method: "post",

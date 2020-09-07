@@ -15,93 +15,122 @@
 <body>
 
 <div class="page-title">
-    <h3>你所在的位置是：APP应用管理 > 修改APP基本信息</h3>
-    <div style="height: 500px;" class="x_panel tile fixed_height_320 overflow_hidden">
+
+    <div style="height: 700px;" class="x_panel tile fixed_height_320 overflow_hidden">
         <div class="x_title" >
-            <p>App基础信息</p>
+            <p style="color: black">App基础信息</p>
             <div class="clearfix">
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">软件ID </label>
+
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">软件ID </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" name="id" class="form-control"disabled="disabled"   value="${ChakanList.id}">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">软件名称 </label>
+
+
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">软件名称 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" name="softwareName" class="form-control"  value="${ChakanList.softwareName}">
                     </div>
-                </div>
 
 
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">APK名称 </label>
+
+
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">APK名称 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" name="APKName" class="form-control"  value="${ChakanList.APKName}">
                     </div>
-                </div>
 
 
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">支持ROM </label>
+
+
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">支持ROM </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" name="supportROM" class="form-control" value="${ChakanList.supportROM}">
                     </div>
-                </div>
 
 
 
 
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">界面语言 </label>
+
+
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">界面语言 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" name="interfaceLanguage" class="form-control"  value="${ChakanList.interfaceLanguage}">
                     </div>
-                </div>
 
 
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">软件大小 </label>
+
+
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">软件大小 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" name="softwareSize" class="form-control"  value="${ChakanList.softwareSize}">
                     </div>
-                </div>
 
 
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">下载次数</label>
+
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">下载次数</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" class="form-control"disabled="disabled" value="${ChakanList.downloads}">
 
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">所属分类</label>
+
+
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">所属分类</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" class="form-control"disabled="disabled"  value="${ChakanList.categoryLevel1Name}>${ChakanList.categoryLevel2Name}>${ChakanList.categoryLevel3Name}">
                     </div>
-                </div>
 
 
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">APP状态 </label>
+
+
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">APP状态 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" class="form-control" disabled="disabled"  value="${ChakanList.statusName}">
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">应用简介 </label>
+
+
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">应用简介 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" name="appInfo" class="form-control"  value="${ChakanList.appInfo}">
                     </div>
+
+
+
+
+
+
+
+
+
+                <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12"
+                       for="a_logoPicPath">更换LOGO图片 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input style="border: 0px solid red" type="file" class="form-control col-md-7 col-xs-12" name="a_logoPicPath"
+                           required="required" id="a_logoPicPath"/>
+                    ${fileUploadError }
                 </div>
 
-            </div>
 
+
+
+
+
+
+
+
+
+                <div style="margin-left: 300px;margin-top: 10px" class="col-md-9 col-sm-9 col-xs-12">
+                       <img src="${ChakanList.logoPicPath}"  width="150px" height="150px" alt="">
+                   </div>
+
+
+
+            </div>
         </div>
-        <div class="form-group">
+
             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                 <c:if  test="${ChakanList.status==3}">
                     <button type="submit" class="btn btn-primary" onclick="xiugai()">保存并再次提交审核</button>
@@ -120,7 +149,7 @@
                 </c:if>
                 <button type="submit" class="btn btn-success">重填</button>
             </div>
-        </div>
+
     </div>
 
 </div>

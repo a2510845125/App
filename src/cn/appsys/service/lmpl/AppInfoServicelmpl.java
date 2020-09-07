@@ -18,16 +18,48 @@ public class AppInfoServicelmpl implements cn.appsys.service.AppInfoService {
     private AppInfoMapper mapper;
 
     @Override
-    public List<App_info> getAppList(String softwareName, String APKName, Integer flatformId,Integer categoryLevel1,Integer categoryLevel2,Integer categoryLevel3, Integer currentPageNo, Integer pageSize) {
-        return mapper.getAppList(softwareName, APKName, flatformId,categoryLevel1,categoryLevel2,categoryLevel3, (currentPageNo - 1) * pageSize, pageSize);
+    public List<App_info> getAppList(String softwareName,
+                                     String APKName,
+                                     Integer flatformId,
+                                     Integer categoryLevel1,
+                                     Integer categoryLevel2,
+                                     Integer categoryLevel3,
+                                     Integer modifyBy,
+                                     Integer currentPageNo,
+                                     Integer pageSize) {
+        return mapper.getAppList(softwareName, APKName, flatformId,categoryLevel1,categoryLevel2,categoryLevel3,modifyBy, (currentPageNo - 1) * pageSize, pageSize);
     }
 
     @Override
-    public int getTotalCount(String softwareName, String APKName, Integer flatformId,Integer categoryLevel1,Integer categoryLevel2,Integer categoryLevel3 ) {
-        return mapper.getTotalCount(softwareName, APKName, flatformId,categoryLevel1,categoryLevel2,categoryLevel3);
+    public int getTotalCount(String softwareName,
+                             String APKName,
+                             Integer flatformId,
+                             Integer categoryLevel1,
+                             Integer categoryLevel2,
+                             Integer categoryLevel3,
+                             Integer modifyBy) {
+        return mapper.getTotalCount(softwareName, APKName, flatformId,categoryLevel1,categoryLevel2,categoryLevel3,modifyBy);
+    }
+//超级管理员
+@Override
+public List<App_info> getAppList2(String softwareName, String APKName, Integer flatformId,Integer categoryLevel1,Integer categoryLevel2,Integer categoryLevel3, Integer currentPageNo, Integer pageSize) {
+    return mapper.getAppList2(softwareName, APKName, flatformId,categoryLevel1,categoryLevel2,categoryLevel3, (currentPageNo - 1) * pageSize, pageSize);
+}
+
+    @Override
+    public int getTotalCount2(String softwareName, String APKName, Integer flatformId,Integer categoryLevel1,Integer categoryLevel2,Integer categoryLevel3 ) {
+        return mapper.getTotalCount2(softwareName, APKName, flatformId,categoryLevel1,categoryLevel2,categoryLevel3);
     }
 
     //    ===========================================添加
+//    @Override
+//    public boolean add(App_info app_info) {
+//        if (mapper.addAPP(app_info) > 0) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
     @Override
     public boolean add(App_info app_info) {
         if (mapper.addAPP(app_info) > 0) {
@@ -53,6 +85,9 @@ public class AppInfoServicelmpl implements cn.appsys.service.AppInfoService {
     @Override
     public List<App_version> ChakanBanben(Integer appId) {
         return mapper.ChakanBanben(appId);
+    }
+    public App_version ChakanBanben2(Integer appId) {
+        return mapper.ChakanBanben2(appId);
     }
 
     //修改上架为下架操作
@@ -119,6 +154,24 @@ public class AppInfoServicelmpl implements cn.appsys.service.AppInfoService {
             return false;
         }
     }
+//审核通过
+    @Override
+    public boolean tongguo(App_info app_info) {
+        if (mapper.tongguo(app_info) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+//审核不通过
+    @Override
+    public boolean butongguo(App_info app_info) {
+        if (mapper.butongguo(app_info) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 //根据条件查询出app列表
@@ -149,6 +202,6 @@ public class AppInfoServicelmpl implements cn.appsys.service.AppInfoService {
 //                queryFlatformId,
 //                devId);
 //    }
-
+//审核通过
 
 }

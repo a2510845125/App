@@ -4,14 +4,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="header.jsp" %>
 <div class="page-title">
-    <h3>你所在的位置是：APP应用管理 > 查看应用信息</h3>
-    软件名称：${ChakanList.softwareName}
     <div style="height: 400px;" class="x_panel tile fixed_height_320 overflow_hidden">
         <div class="x_title">
-            <p>App基础信息</p>
+            <p style="color: black">App基础信息</p>
             <div class="clearfix">
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">软件名称 </label>
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">软件名称 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" class="form-control" disabled="disabled"
                                placeholder="${ChakanList.softwareName}">
@@ -20,7 +18,7 @@
 
 
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">APK名称 </label>
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">APK名称 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" class="form-control" disabled="disabled" placeholder="${ChakanList.APKName}">
                     </div>
@@ -28,7 +26,7 @@
 
 
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">支持ROM </label>
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">支持ROM </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" class="form-control" disabled="disabled"
                                placeholder="${ChakanList.supportROM}">
@@ -37,7 +35,7 @@
 
 
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">界面语言 </label>
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">界面语言 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" class="form-control" disabled="disabled"
                                placeholder="${ChakanList.interfaceLanguage}">
@@ -46,7 +44,7 @@
 
 
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">软件大小 </label>
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">软件大小 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" class="form-control" disabled="disabled"
                                placeholder="${ChakanList.softwareSize}M">
@@ -55,7 +53,7 @@
 
 
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">下载次数</label>
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">下载次数</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" class="form-control" disabled="disabled"
                                placeholder="${ChakanList.downloads}">
@@ -63,7 +61,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">所属分类</label>
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">所属分类</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" class="form-control" disabled="disabled"
                                placeholder="${ChakanList.categoryLevel1Name}>${ChakanList.categoryLevel2Name}>${ChakanList.categoryLevel3Name}">
@@ -72,7 +70,7 @@
 
 
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">APP状态 </label>
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">APP状态 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" class="form-control" disabled="disabled"
                                placeholder="${ChakanList.statusName}">
@@ -80,7 +78,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">应用简介 </label>
+                    <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">应用简介 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <input type="text" class="form-control" disabled="disabled" placeholder="${ChakanList.appInfo}">
                     </div>
@@ -92,54 +90,54 @@
     </div>
     <div style="height: 200px;" class="x_panel tile fixed_height_320 overflow_hidden">
         <div class="x_title" style="border-bottom: 0px solid black">
-            <p>历史版本列表</p>
+            <p style="color: black">历史版本列表</p>
             <div style="border: none;" class="col-md-2 col-sm-12 col-xs-12 form-group">
-                <span>软件名称</span>
+                <span style="color: black">软件名称</span>
             </div>
             <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
 
-                <span>版本号</span>
+                <span style="color: black">版本号</span>
             </div>
             <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
 
-                <span>版本大小</span>
+                <span style="color: black">版本大小</span>
             </div>
             <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
 
-                <span>发布状态</span>
+                <span style="color: black">发布状态</span>
             </div>
             <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
 
-                <span>APK文件</span>
+                <span style="color: black">APK文件</span>
             </div>
             <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
 
-                <span>最新更新时间</span>
+                <span style="color: black">最新更新时间</span>
             </div>
             <c:forEach var="as" items="${ChakanBanben}" varStatus="status">
                 <p><br></p>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
-                    <span>${as.appName}</span>
+                    <span style="color: black">${as.appName}</span>
                 </div>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
-                    <span>${as.versionNo}</span>
+                    <span style="color: black">${as.versionNo}</span>
                 </div>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
 
-                    <span>${as.versionSize}M</span>
+                    <span style="color: black">${as.versionSize}M</span>
                 </div>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
-                    <span>${as.publishStatusName}</span>
+                    <span style="color: black">${as.publishStatusName}</span>
                 </div>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
                   <div style="width: 50px;">
-                        <span>
+                        <span style="color: black">
                                 ${as.apkFileName}
                         </span>
                   </div>
                 </div>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
-                    <span>${as.creationDate}</span>
+                    <span style="color: black">${as.creationDate}</span>
                 </div>
             </c:forEach>
         </div>

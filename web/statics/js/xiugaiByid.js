@@ -1,13 +1,13 @@
 //根据id修改 修改版本
 function xiugai9() {
-    alert("修改 修改版本");
+    alert("根据id修改 修改版本操作");
     var softwareSize = $("input[name='softwareSize99']").val();
     var appInfo = $("input[name='appInfo99']").val();
     var id = $("input[name='id9']").val();
-    alert("软件id"+id);
-    alert("软件大小"+softwareSize);
-    alert("简介"+appInfo)
-    alert(softwareSize);
+    // alert("软件id"+id);
+    // alert("软件大小"+softwareSize);
+    // alert("简介"+appInfo)
+    // alert(softwareSize);
 
     var data = {
         "id": id,

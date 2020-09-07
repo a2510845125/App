@@ -21,6 +21,18 @@
     <!--一键配置 配置映射器和modelAndView处理器-->
     <mvc:annotation-driven></mvc:annotation-driven>
 
+
+    <!-- 文件上传解析器  -->
+    <!--文件上传的解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="5000000"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+
+
+
+
     <!--been 目的 对应 控制器-->
     <!--name是值某个网址,class是控制器-->
     <!--<bean name="/index.html" class="cn.smbms.controller.indexController"></bean>-->
