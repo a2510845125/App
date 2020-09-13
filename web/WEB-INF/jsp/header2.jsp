@@ -8,7 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>芜湖~芜湖~芜湖</title>
+    <link rel="shortcut icon" href="/statics/images/qqqqqqqqqqqqqqq.jpg" type="image/gif" />
     <!-- Bootstrap -->
     <link href="/statics/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -39,11 +40,11 @@
                 <!-- menu profile quick info -->
                 <div class="profile">
                     <div class="profile_pic">
-                        <img src="/statics/images/u=3679785547,3643600096&fm=26&gp=0.jpg" alt="..." class="img-circle profile_img">
+                        <a href="/login/adadad12.html"><img src="/statics/images/timg.jpg" alt="..." class="img-circle profile_img"></a>
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
-                        <h2>${userSession.devCode}</h2>
+                        <h2>${ADMIN_SESSION.userCode}</h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -53,12 +54,11 @@
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
-                        <h3>${ADMIN_SESSION.userName}</h3>
-                        <ul class="nav side-menu">
+
+                        <ul  style="margin-top: 100px"  class="nav side-menu">
                             <li><a><i class="fa fa-home"></i> APP账户管理 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/app/getAppList2.html">APP审核</a></li>
-                                    <li><a href="index2.html">广告推广</a></li>
                                 </ul>
                             </li>
 
@@ -212,3 +212,8 @@
 
 </body>
 </html>
+<style>
+    *{
+        font-family:'Microsoft JhengHei'
+    }
+</style>

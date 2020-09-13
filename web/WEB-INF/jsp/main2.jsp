@@ -13,12 +13,12 @@
             document.write(currentime)
         </script>
     </div>
-
     <div class="x_panel tile fixed_height_320 overflow_hidden" style="height: 100px;">
         <div class="x_title">
-            <p style="color: black">App信息管理维护 ${userSession.devName}，您可以通过搜索筛选框对App的信息进行修改，删除等操作 ^_^</p>
+            <p style="color: black;">App信息管理维护 ${userSession.devName}，您可以通过搜索筛选框对App的信息进行修改，删除等操作 ^_^</p>
             <div class="clearfix">
-                <form method="post" action="${pageContext.request.contextPath }/app/getAppList.html?modifyBy=${userSession.modifyBy}">
+                <form method="post"
+                      action="${pageContext.request.contextPath }/app/getAppList.html?modifyBy=${userSession.modifyBy}">
                     <span style="color: black">软件名称：</span>
                     <input style="  border: 1px solid #e5e5e5;
     outline: none;" name="querysoftwareName" type="text" value="${querysoftwareName}">
@@ -77,29 +77,36 @@
                     </select>
                     <input type="hidden" name="pageIndex" value="1"/>
                     <%--<input value="" type="submit" id="searchbutton">--%>
-                    <button type="submit"  id="searchbutton" class="btn btn-default btn-xs">查询</button>
+                    <button type="submit" id="searchbutton" class="btn btn-default btn-xs">查询</button>
                     <%--<button type="button" class="btn btn-default btn-sm">Medium Button</button>--%>
                 </form>
             </div>
         </div>
+
     </div>
+
     <div class="x_panel tile fixed_height_320 overflow_hidden" style="height: 516px;">
+
         <button style="background: white" type="button" class="btn btn-primary">
             <a style="color: black" href="/app/TiJiao.html">新增APP信息</a>
+
         </button>
         <div class="x_title" style="border-bottom: 0px solid red">
+
             <table class="providerTable" cellpadding="0" cellspacing="0">
+
                 <tr class="firstTr">
-                    <th style="color:  black;font-size: 14px" width="12%">软件名称</th>
-                    <th style="color:  black;font-size: 14px" width="10%">APK名称（唯一）</th>
-                    <th style="color:  black;font-size: 14px" width="5%">大小</th>
-                    <th style="color:  black;font-size: 14px" width="15%">所属分类</th>
-                    <th style="color:  black;font-size: 14px" width="5%">所属平台</th>
-                    <th style="color:  black;font-size: 14px" width="5%">状态</th>
-                    <th style="color:  black;font-size: 14px" width="5%">下载次数</th>
-                    <th style="color:  black;font-size: 14px" width="5%">最新版本号</th>
-                    <th style="color:  black;font-size: 14px" width="5%">操作</th>
+                    <th style="color:  black;font-size: 14px" width="12%">&nbsp;&nbsp;&nbsp;软件名称</th>
+                    <th style="color:  black;font-size: 14px" width="10%">&nbsp;&nbsp;&nbsp;APK名称（唯一）</th>
+                    <th style="color:  black;font-size: 14px" width="5%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大小</th>
+                    <th style="color:  black;font-size: 14px" width="15%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所属分类</th>
+                    <th style="color:  black;font-size: 14px" width="5%">&nbsp;&nbsp;&nbsp;所属平台</th>
+                    <th style="color:  black;font-size: 14px" width="5%">&nbsp;&nbsp;&nbsp;状态</th>
+                    <th style="color:  black;font-size: 14px" width="5%">&nbsp;&nbsp;&nbsp;下载次数</th>
+                    <th style="color:  black;font-size: 14px" width="5%">&nbsp;&nbsp;&nbsp;版本号</th>
+                    <th style="color:  black;font-size: 14px" width="5%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作</th>
                 </tr>
+
                 <c:forEach var="app" items="${appInfoList}" varStatus="status">
                     <input id="idd" onclick="iddd(${app.id})" type="hidden" value="${app.id}">
                     <div style="">
@@ -240,23 +247,31 @@
                                                 <a href="/app/shangjia.html?id=${app.id}">上架</a>
                                             </li>
                                         </c:if>
+
                                     </ul>
+
                                 </div>
+
                             </td>
+
                         </tr>
+
                     </div>
+
                 </c:forEach>
+
             </table>
+            <%@include file="bg.jsp" %>
         </div>
         <div style="width: 280px;background: white;position: absolute ;bottom: 30px;left: 950px">
-          <div style="">
-              <input style="" type="hidden" id="totalPageCount" value="${totalPageCount}"/>
-              <c:import url="rollpage.jsp">
-                  <c:param name="totalCount" value="${totalCount}"/>
-                  <c:param name="currentPageNo" value="${currentPageNo}"/>
-                  <c:param name="totalPageCount" value="${totalPageCount}"/>
-              </c:import>
-          </div>
+            <div style="">
+                <input style="" type="hidden" id="totalPageCount" value="${totalPageCount}"/>
+                <c:import url="rollpage.jsp">
+                    <c:param name="totalCount" value="${totalCount}"/>
+                    <c:param name="currentPageNo" value="${currentPageNo}"/>
+                    <c:param name="totalPageCount" value="${totalPageCount}"/>
+                </c:import>
+            </div>
         </div>
     </div>
 
@@ -302,5 +317,44 @@
 
     option {
         border: 1px solid #e5e5e5;
+    }
+
+    * {
+        font-family: 'Microsoft JhengHei'
+    }
+
+
+
+
+
+    .btn {
+
+        border: 1px solid rgb(211, 215, 217);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn:hover {
+        box-shadow: 1px 1px 25px 10px rgba(203, 197, 198, 0.2);
+    }
+
+    .btn:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+                150deg,
+                transparent,
+                rgba(184, 176, 176, 0.4),
+                transparent
+        );
+        transition: all 650ms;
+    }
+
+    .btn:hover:before {
+        left: 100%;
     }
 </style>

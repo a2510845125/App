@@ -6,12 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <link href="/statics/css/bootstrap.css" rel="stylesheet">
 <script type="text/javascript" src="/statics/js/jquery-3.4.1.min.js"></script>
 
 <html>
 <head>
-    <title>Title</title>
+    <title>芜湖~芜湖~芜湖</title>
+    <link rel="shortcut icon" href="/statics/images/qqqqqqqqqqqqqqq.jpg" type="image/gif" />
 </head>
 <body>
 

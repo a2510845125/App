@@ -15,7 +15,7 @@
     </script>
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
+            <div class="x_panel" style="height: 690px;">
                 <div class="x_title">
                     <h2 style="color: black">新增AP基础信息
                         <small>${userSession.devName}</small>
@@ -233,7 +233,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <button type="submit" class="btn btn-primary" onclick="">添加</button>
+                                <button type="submit" style="background: white" class="btn btn-primary" onclick=""><span style="color: black">添加</span></button>
                                 <button type="submit" class="btn btn-success">重填</button>
                             </div>
                         </div>
@@ -248,3 +248,38 @@
 </div>
 <%@include file="fooder.jsp" %>
 <script src="/statics/js/TiJiao.js"></script>
+<style>
+    *{
+        font-family:'Microsoft JhengHei'
+    }
+    .btn {
+
+        border: 1px solid rgb(211, 215, 217);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn:hover {
+        box-shadow: 1px 1px 25px 10px rgba(203, 197, 198, 0.2);
+    }
+
+    .btn:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+                150deg,
+                transparent,
+                rgba(184, 176, 176, 0.4),
+                transparent
+        );
+        transition: all 650ms;
+    }
+
+    .btn:hover:before {
+        left: 100%;
+    }
+</style>

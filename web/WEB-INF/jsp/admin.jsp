@@ -5,7 +5,7 @@
 <%@include file="header2.jsp"%>
 <div class="page-title">
     <h3>
-        欢迎您超级管理员：${ADMIN_SESSION.userName}
+
     </h3>   <div class="report">
     <script>
         var weekDayLabels = new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
@@ -20,4 +20,5 @@
     <iframe frameborder="0" scrolling="no" hspace="0" src="https://i.tianqi.com/?c=code&a=getcode&id=35&h=55&w=200"></iframe>
 
 </div>
+<%@include file="bg.jsp"%>
 <%@include file="fooder.jsp"%>

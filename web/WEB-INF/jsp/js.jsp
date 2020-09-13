@@ -14,3 +14,8 @@
 <%--     <script src="${pageContext.request.contextPath }/statics/js/validator.js"></script> --%>
 <!-- dropzone -->
 <script src="${pageContext.request.contextPath }/statics/js/dropzone.js"></script>
+
+
+
+
+

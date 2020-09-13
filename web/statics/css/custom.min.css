@@ -62,7 +62,7 @@
 }
 
 .nav-sm .nav.child_menu li.active, .nav-sm .nav.side-menu li.active-sm {
-    border-right: 5px solid #1ABB9C
+    border-right: 5px solid white;
 }
 
 .nav-sm ul.nav.child_menu ul, .nav-sm .nav.side-menu li.active-sm ul ul {
@@ -682,7 +682,7 @@ a:hover, a:focus {
 }
 
 .nav.side-menu > li.current-page, .nav.side-menu > li.active {
-    border-right: 5px solid #1ABB9C
+    border-right: 5px solid white;
 }
 
 .nav li.current-page {

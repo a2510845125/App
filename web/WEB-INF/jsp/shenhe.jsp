@@ -15,7 +15,7 @@
     </div>
     <div class="x_panel tile fixed_height_320 overflow_hidden" style="height: 100px;">
         <div class="x_title">
-            <p style="color: black">App信息管理维护 ${userSession.devName}，您可以通过搜索筛选框对App的信息进行修改，删除等操作 ^_^</p>
+            <p style="color: black">App信息管理维护 ${ADMIN_SESSION.userCode}，您可以通过搜索筛选框对App的信息进行修改，删除等操作 ^_^</p>
             <div class="clearfix">
                 <form method="post" action="${pageContext.request.contextPath }/app/getAppList2.html">
                     <span style="color: black">软件名称：</span>
@@ -75,27 +75,25 @@
                         <option value="29">输入法</option>
                     </select>
                     <input type="hidden" name="pageIndex" value="1"/>
-                    <input value="查 询" type="submit" id="searchbutton">
+                    <button type="submit" id="searchbutton" class="btn btn-default btn-xs">查询</button>
                 </form>
             </div>
         </div>
     </div>
     <div class="x_panel tile fixed_height_320 overflow_hidden" style="height: 516px;">
-        <button style="background: white" type="button" class="btn btn-primary">
-            <a style="color: black" href="/app/TiJiao.html">新增APP信息</a>
-        </button>
+
         <div class="x_title" style="border-bottom: 0px solid red">
             <table class="providerTable" cellpadding="0" cellspacing="0">
                 <tr class="firstTr">
-                    <th style="color:  black;font-size: 14px" width="12%">软件名称</th>
-                    <th style="color:  black;font-size: 14px" width="10%">APK名称（唯一）</th>
-                    <th style="color:  black;font-size: 14px" width="5%">大小</th>
-                    <th style="color:  black;font-size: 14px" width="15%">所属分类</th>
-                    <th style="color:  black;font-size: 14px" width="5%">所属平台</th>
-                    <th style="color:  black;font-size: 14px" width="5%">状态</th>
-                    <th style="color:  black;font-size: 14px" width="5%">下载次数</th>
-                    <th style="color:  black;font-size: 14px" width="5%">最新版本号</th>
-                    <th style="color:  black;font-size: 14px" width="5%">操作</th>
+                    <th style="color:  black;font-size: 14px" width="12%">&nbsp;&nbsp;&nbsp;软件名称</th>
+                    <th style="color:  black;font-size: 14px" width="10%">&nbsp;&nbsp;&nbsp;APK名称（唯一）</th>
+                    <th style="color:  black;font-size: 14px" width="5%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大小</th>
+                    <th style="color:  black;font-size: 14px" width="15%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所属分类</th>
+                    <th style="color:  black;font-size: 14px" width="5%">&nbsp;&nbsp;&nbsp;所属平台</th>
+                    <th style="color:  black;font-size: 14px" width="5%">&nbsp;&nbsp;&nbsp;状态</th>
+                    <th style="color:  black;font-size: 14px" width="5%">&nbsp;&nbsp;&nbsp;下载次数</th>
+                    <th style="color:  black;font-size: 14px" width="5%">&nbsp;&nbsp;&nbsp;最新版本号</th>
+                    <th style="color:  black;font-size: 14px" width="5%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作</th>
                 </tr>
                 <c:forEach var="app" items="${appInfoList}" varStatus="status">
                     <input id="idd" onclick="iddd(${app.id})" type="hidden" value="${app.id}">
@@ -128,7 +126,7 @@
                             <td style=" border:1px solid #edf5ec;background:#fafcfd;height: 50px;">
                                 <div style="margin-left: 20px" class="btn-group">
                                     <div class="btn-group">
-                                        <button type="button">
+                                        <button style="background: white" type="button" class="btn btn-primary">
                                             <a href="/app/chakan2.html?id=${app.id}">审核</a>
                                         </button>
                                     </div>
@@ -138,6 +136,7 @@
                     </div>
                 </c:forEach>
             </table>
+            <%@include file="bg.jsp" %>
         </div>
         <div style="width: 280px;background: white;position: absolute ;bottom: 30px;left: 950px">
             <div style="">
@@ -175,5 +174,41 @@
     }
 </script>
 <style>
+    li {
+        list-style: none; /*去掉小圆点*/
+    }
 
+    *{
+        font-family:'Microsoft JhengHei'
+    }
+    .btn {
+
+        border: 1px solid rgb(211, 215, 217);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn:hover {
+        box-shadow: 1px 1px 25px 10px rgba(203, 197, 198, 0.2);
+    }
+
+    .btn:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+                150deg,
+                transparent,
+                rgba(184, 176, 176, 0.4),
+                transparent
+        );
+        transition: all 650ms;
+    }
+
+    .btn:hover:before {
+        left: 100%;
+    }
 </style>

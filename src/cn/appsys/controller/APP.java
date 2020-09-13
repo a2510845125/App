@@ -1,4 +1,6 @@
 package cn.appsys.controller;
+
+import cn.appsys.pojo.Dev_user;
 import org.springframework.web.multipart.MultipartFile;
 import cn.appsys.pojo.App_info;
 import cn.appsys.pojo.App_version;
@@ -48,7 +50,9 @@ public class APP {
 
     @RequestMapping(value = "/TiJiao.html")
     public String TJ() {
-        return "TiJiao";
+//        return "TiJiao";
+            return "TiJiao";
+
     }
 
     //    真正执行添加方法的 添加 业务的方法
@@ -103,31 +107,31 @@ public class APP {
 
     @RequestMapping(value = "/doAddAPP.html")
     public String doAddUser(String softwareName,
-                          String APKName,
-                          String supportROM,
-                          String interfaceLanguage,
-                          Integer softwareSize,
-                          Integer downloads,
-                          String appInfo,
-                          Integer status,
-                          Integer flatformId,
-                          Integer categoryLevel1,
-                          Integer categoryLevel2,
-                          Integer categoryLevel3,
-                          Integer modifyBy,
-                          HttpServletRequest request, HttpServletResponse response,
-                          @RequestParam(value="a_logoPicPath",required= false) MultipartFile attach)  throws IOException {
+                            String APKName,
+                            String supportROM,
+                            String interfaceLanguage,
+                            Integer softwareSize,
+                            Integer downloads,
+                            String appInfo,
+                            Integer status,
+                            Integer flatformId,
+                            Integer categoryLevel1,
+                            Integer categoryLevel2,
+                            Integer categoryLevel3,
+                            Integer modifyBy,
+                            HttpServletRequest request, HttpServletResponse response,
+                            @RequestParam(value = "a_logoPicPath", required = false) MultipartFile attach) throws IOException {
         PrintWriter out = response.getWriter();
         System.out.println("=================已经进入添加操作");
         System.out.println("====================所属平台" + flatformId);
         System.out.println("====================一级菜单" + categoryLevel1);
         System.out.println("====================一级菜单" + categoryLevel2);
         System.out.println("====================一级菜单" + categoryLevel3);
-        System.out.println("====================用户ID" +modifyBy);
-        String logoPicPath=null;
-        String logoLocPath=null;
-        String path="C:\\Users\\Administrator\\Desktop\\App\\web\\statics\\uploadfiles";
-        String filePath="/statics/uploadfiles";
+        System.out.println("====================用户ID" + modifyBy);
+        String logoPicPath = null;
+        String logoLocPath = null;
+        String path = "C:\\Users\\Administrator\\Desktop\\App\\web\\statics\\uploadfiles";
+        String filePath = "/statics/uploadfiles";
 //        if(!attach.isEmpty()){
 ////            String path = request.getSession().getServletContext().getRealPath("statics"+ File.separator+"uploadfiles");
 //                String path = request.getSession().getServletContext().getRealPath("C:\\Users\\Administrator\\Desktop\\App\\web\\statics\\uploadfiles");
@@ -164,43 +168,40 @@ public class APP {
 //        }
 
 
-        if(!attach.isEmpty()){
+        if (!attach.isEmpty()) {
             //String path = request.getSession().getServletContext().getRealPath("statics"+File.separator+"uploadfiles");
-            System.out.println("uploadFile path ============== > "+path);
+            System.out.println("uploadFile path ============== > " + path);
             String oldFileName = attach.getOriginalFilename();//原文件名
-            System.out.println("uploadFile oldFileName ============== > "+oldFileName);
-            String prefix= FilenameUtils.getExtension(oldFileName);//原文件后缀
+            System.out.println("uploadFile oldFileName ============== > " + oldFileName);
+            String prefix = FilenameUtils.getExtension(oldFileName);//原文件后缀
             System.out.println("uploadFile prefix============> " + prefix);
             int filesize = 500000;
             System.out.println("uploadFile size============> " + attach.getSize());
-            if(attach.getSize() >  filesize){//上传大小不得超过 500k
+            if (attach.getSize() > filesize) {//上传大小不得超过 500k
                 request.setAttribute("uploadFileError", " * 上传大小不得超过 500k");
                 return "useradd";
-            }else if(prefix.equalsIgnoreCase("jpg") || prefix.equalsIgnoreCase("png")
-                    || prefix.equalsIgnoreCase("jpeg") || prefix.equalsIgnoreCase("pneg")){//上传图片格式不正确
-                String fileName = System.currentTimeMillis()+ RandomUtils.nextInt(1000000)+"_Personal.jpg";
+            } else if (prefix.equalsIgnoreCase("jpg") || prefix.equalsIgnoreCase("png")
+                    || prefix.equalsIgnoreCase("jpeg") || prefix.equalsIgnoreCase("pneg")) {//上传图片格式不正确
+                String fileName = System.currentTimeMillis() + RandomUtils.nextInt(1000000) + "_Personal.jpg";
                 System.out.println("new fileName======== " + attach.getName());
                 File targetFile = new File(path, fileName);
-                if(!targetFile.exists()){
+                if (!targetFile.exists()) {
                     targetFile.mkdirs();
                 }
                 //保存
-                    attach.transferTo(targetFile);
+                attach.transferTo(targetFile);
 
                 /*通过循环变量区分哪个文件*/
 
-                    logoPicPath = filePath+"/"+fileName;
+                logoPicPath = filePath + "/" + fileName;
 
-                    logoLocPath=path+"/"+fileName;
+                logoLocPath = path + "/" + fileName;
 
-            }else{
+            } else {
                 request.setAttribute("uploadFileError", " * 上传图片格式不正确");
                 return "useradd";
             }
         }
-
-
-
 
 
         //        调用相关业务
@@ -226,9 +227,10 @@ public class APP {
 //        String message = "";
         if (r) {
             System.out.println("添加成功");
-            return "redirect:/app/getAppList.html";
+            Dev_user dev_user = (Dev_user) request.getSession().getAttribute(Constants.USER_SESSION);
+            return "redirect:/app/getAppList.html?modifyBy=" + dev_user.getModifyBy();
         } else {
-           return "Tijiao";
+            return "Tijiao";
 
         }
 //        json的数据格式 固定格式
@@ -271,7 +273,7 @@ public class APP {
         if (modifyBy != null && !modifyBy.equals("")) {
             _modifyBy = Integer.valueOf(modifyBy);
         }
-        System.out.println("--------------------------------------------"+_modifyBy);
+        System.out.println("--------------------------------------------" + _modifyBy);
         List<App_info> appInfoList = null;//查询结果
         //        设置页面的容量
         int pageSize = Constants.pageSize;
@@ -291,7 +293,7 @@ public class APP {
             }
         }
         //        数据的总数量
-        int totalCount = appInfoService.getTotalCount(querysoftwareName, _queryAPKName, _flatformId, _categoryLevel1, _categoryLevel2, _categoryLevel3,_modifyBy);
+        int totalCount = appInfoService.getTotalCount(querysoftwareName, _queryAPKName, _flatformId, _categoryLevel1, _categoryLevel2, _categoryLevel3, _modifyBy);
         //        计算总页数
         PageSupport pageSupport = new PageSupport();
         pageSupport.setCurrentPageNo(currentPageNo);
@@ -306,7 +308,7 @@ public class APP {
             currentPageNo = totalPageCount;
         }
         //        调用业务层的查询方法 获取数据
-        appInfoList = appInfoService.getAppList(querysoftwareName, _queryAPKName, _flatformId, _categoryLevel1, _categoryLevel2, _categoryLevel3,_modifyBy, currentPageNo, pageSize);
+        appInfoList = appInfoService.getAppList(querysoftwareName, _queryAPKName, _flatformId, _categoryLevel1, _categoryLevel2, _categoryLevel3, _modifyBy, currentPageNo, pageSize);
         for (App_info item : appInfoList) {
             System.out.println("元素：" + item);
         }
@@ -319,7 +321,7 @@ public class APP {
         model.addAttribute("categoryLevel1", categoryLevel1);
         model.addAttribute("categoryLevel2", categoryLevel2);
         model.addAttribute("categoryLevel3", categoryLevel3);
-        model.addAttribute("modifyBy",modifyBy);
+        model.addAttribute("modifyBy", modifyBy);
         System.out.println("=====================================" + querysoftwareName);
         System.out.println("=====================================" + queryAPKName);
         System.out.println("======================================" + flatformId);
@@ -434,7 +436,8 @@ public class APP {
         boolean r = appInfoService.getdelete(id);
 
 
-        return "redirect:/app/getAppList.html";
+        Dev_user dev_user = (Dev_user) request.getSession().getAttribute(Constants.USER_SESSION);
+        return "redirect:/app/getAppList.html?modifyBy=" + dev_user.getModifyBy();
     }
 
     //    根据id查看详情
@@ -497,7 +500,7 @@ public class APP {
 //    }
 
 
-        //    根据id修改基础信息  第一步 先根据id查看基本信息 （添加图片）
+    //    根据id修改基础信息  第一步 先根据id查看基本信息 （添加图片）
     @RequestMapping("/xiugaijiben.html")
     public String getXiuGai_jiBne(@RequestParam Integer id, HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("-------------------------已经进入修改基本信息");
@@ -536,10 +539,11 @@ public class APP {
 //        调用相关业务
         System.out.println("被下架的商品的id是" + id);
         appInfoService.getShangJiaById(id);
-
+        Dev_user dev_user = (Dev_user) request.getSession().getAttribute(Constants.USER_SESSION);
+        return "redirect:/app/getAppList.html?modifyBy=" + dev_user.getModifyBy();
         // out.print(JSON.toJSON(ChakanList));
 //        response.sendRedirect("/login/zxzx.html");
-        return "redirect:/app/getAppList.html";
+
     }
 
     //    修改下架为上架操作
@@ -553,7 +557,10 @@ public class APP {
 
         // out.print(JSON.toJSON(ChakanList));
 //        response.sendRedirect("/login/zxzx.html");
-        return "redirect:/app/getAppList.html";
+        Dev_user dev_user = (Dev_user) request.getSession().getAttribute(Constants.USER_SESSION);
+        return "redirect:/app/getAppList.html?modifyBy=" + dev_user.getModifyBy();
+//        return response.sendRedirect("/index");
+        //
     }
 
     //    执行根据id修改操作
@@ -630,14 +637,58 @@ public class APP {
 
     //    根据id新增版本
     @RequestMapping(value = "/addByid.html")
-    public void addByid(Integer appId,
-                        String versionNo,
-                        Integer versionSize,
-                        Integer publishStatus,
-                        Integer modifyBy,
-                        HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String addByid(Integer appId,
+                          String versionNo,
+                          Integer versionSize,
+                          Integer publishStatus,
+                          Integer modifyBy,
+                          HttpServletRequest request, HttpServletResponse response,
+                          @RequestParam(value = "a_logoPicPath", required = false) MultipartFile attach) throws IOException {
         PrintWriter out = response.getWriter();
         System.out.println("=================根据id 新增版本操作");
+        String downloadLink = null;
+        String apkLocPath = null;
+        String apkFileName = null;
+        String path = "C:\\Users\\Administrator\\Desktop\\App\\web\\statics\\uploadfiles";
+        String filePath = "/statics/uploadfiles";
+        if (!attach.isEmpty()) {
+            //String path = request.getSession().getServletContext().getRealPath("statics"+File.separator+"uploadfiles");
+            System.out.println("uploadFile path ============== > " + path);
+            String oldFileName = attach.getOriginalFilename();//原文件名
+            System.out.println("uploadFile oldFileName ============== > " + oldFileName);
+            String prefix = FilenameUtils.getExtension(oldFileName);//原文件后缀
+            System.out.println("uploadFile prefix============> " + prefix);
+            int filesize = 500000000;
+            System.out.println("uploadFile size============> " + attach.getSize());
+            if (attach.getSize() > filesize) {//上传大小不得超过 500k
+                request.setAttribute("uploadFileError", " * 上传大小不得超过 50000k");
+                return "useradd";
+            } else if (prefix.equalsIgnoreCase("apk") || prefix.equalsIgnoreCase("apk")
+                    || prefix.equalsIgnoreCase("apk") || prefix.equalsIgnoreCase("apk")) {//上传图片格式不正确
+                String fileName = System.currentTimeMillis() + RandomUtils.nextInt(1000000) + "_Personal.apk";
+                System.out.println("new fileName======== " + attach.getName());
+                File targetFile = new File(path, fileName);
+                if (!targetFile.exists()) {
+                    targetFile.mkdirs();
+                }
+                //保存
+                attach.transferTo(targetFile);
+
+                /*通过循环变量区分哪个文件*/
+
+                downloadLink = filePath + "/" + fileName;
+
+                apkLocPath = path + "/" + fileName;
+
+            } else {
+                request.setAttribute("uploadFileError", " * 上传APK格式不正确");
+                return "useradd";
+            }
+        }
+
+
+        System.out.println("文件地址" + downloadLink);
+        System.out.println("文件地址" + apkLocPath);
         System.out.println("最新版本" + versionNo);
         System.out.println("软件大小" + versionSize);
         //        调用相关业务
@@ -650,6 +701,8 @@ public class APP {
         app_version.setCreationDate(new Date());
         app_version.setModifyDate(new Date());
         app_version.setModifyBy(modifyBy);
+        app_version.setDownloadLink(downloadLink);
+        app_version.setApkLocPath(apkLocPath);
         System.out.println("---------------------------进入APP更换最新ID的操作" + appId);
 
 
@@ -663,9 +716,9 @@ public class APP {
 //        app_version2.setId();
 
 
-        boolean r = appInfoService.addByid(app_version);
         String status1 = null;
         String message = "";
+        boolean r = appInfoService.addByid(app_version);
         if (r) {
             App_version app_version1 = appInfoService.Cha(appId);
             App_info app_info1 = new App_info();
@@ -675,14 +728,32 @@ public class APP {
             app_info1.setVersionId(app_version1.getId());
             System.out.println("=====" + app_version1.getId());
             appInfoService.Cha2(app_info1);
-            status1 = "1";
-            message = "添加成功！";
+
+//            status1 = "1";
+//            message = "添加成功！";
+            Dev_user dev_user = (Dev_user) request.getSession().getAttribute(Constants.USER_SESSION);
+            return "redirect:/app/getAppList.html?modifyBy=" + dev_user.getModifyBy();
         } else {
-            status1 = "0";
-            message = "添加失败！";
+            return "Tijiao";
+
         }
-//        json的数据格式 固定格式
-        out.print("[{\"status\":\"" + status1 + "\",\"message\":\"" + message + "\"}]");
+//        if (r) {
+//            App_version app_version1 = appInfoService.Cha(appId);
+//            App_info app_info1 = new App_info();
+//            app_info1.setId(app_version1.getAppId());
+//            System.out.println("=====" + app_version1.getAppId());
+//
+//            app_info1.setVersionId(app_version1.getId());
+//            System.out.println("=====" + app_version1.getId());
+//            appInfoService.Cha2(app_info1);
+//            status1 = "1";
+//            message = "添加成功！";
+//        } else {
+//            status1 = "0";
+//            message = "添加失败！";
+//        }
+////        json的数据格式 固定格式
+//        out.print("[{\"status\":\"" + status1 + "\",\"message\":\"" + message + "\"}]");
     }
 
 
@@ -761,19 +832,19 @@ public class APP {
 
         int appId = id;
         System.out.println("根据id查看版本信息 appId是" + appId);
-        List<App_version> ChakanBanben = appInfoService.ChakanBanben(appId);
-
-        for (App_version a : ChakanBanben) {
-            System.out.println("==================================" + a);
-        }
+//        List<App_version> ChakanBanben = appInfoService.ChakanBanben(appId);
+//
+//        for (App_version a : ChakanBanben) {
+//            System.out.println("==================================" + a);
+//        }
 
         System.out.println("根据id查看版本信息 appId是" + appId);
         App_version ChakanBanben2 = appInfoService.ChakanBanben2(appId);
 
         System.out.println(ChakanList);
-        System.out.println(ChakanBanben2);
+//        System.out.println(ChakanBanben2);
         request.getSession().setAttribute("ChakanList", ChakanList);
-        request.getSession().setAttribute("ChakanBanben", ChakanBanben);
+//        request.getSession().setAttribute("ChakanBanben", ChakanBanben);
         request.getSession().setAttribute("ChakanBanben222", ChakanBanben2);
         // out.print(JSON.toJSON(ChakanList));
 //        response.sendRedirect("/login/zxzx.html");

@@ -8,7 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>芜湖~芜湖~芜湖</title>
+    <link rel="shortcut icon" href="/statics/images/qqqqqqqqqqqqqqq.jpg" type="image/gif" />
 </head>
 <body>
 <form class="loginForm" action="${pageContext.request.contextPath }/login/BackendLogin.html"  name="actionForm" id="actionForm"  method="post" >

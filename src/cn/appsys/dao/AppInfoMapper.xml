@@ -273,8 +273,8 @@ order by v.creationDate DESC
     <!--根据id 新增版本-->
     <!--返回主键类型被自动强转为Long-->
     <insert id="addByid" parameterType="App_version">
-		insert into app_version (appId,versionNo,versionSize,versionInfo,publishStatus,creationDate,modifyBy,modifyDate)
-				values(#{appId},#{versionNo},#{versionSize},#{versionInfo},#{publishStatus},#{creationDate},#{modifyBy},#{modifyDate})
+		insert into app_version (appId,versionNo,versionSize,versionInfo,publishStatus,creationDate,modifyBy,modifyDate,downloadLink,apkLocPath)
+				values(#{appId},#{versionNo},#{versionSize},#{versionInfo},#{publishStatus},#{creationDate},#{modifyBy},#{modifyDate},#{downloadLink},#{apkLocPath})
 	</insert>
     <!--//    在增加id的方法中查询id 然后调用修改-->
     <select id="Cha" resultType="App_version">

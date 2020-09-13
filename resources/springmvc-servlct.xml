@@ -47,4 +47,17 @@
 
     <!--加载静态资源-->
     <mvc:resources mapping="/statics/**" location="/statics/"/>
+
+
+    <!--拦截器-->
+    <!--<mvc:interceptors>-->
+        <!--&lt;!&ndash;springmvc的拦截器站&ndash;&gt;-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/**"/>-->
+            <!--&lt;!&ndash;一个姓代表 匹配0或者任何数量的字符&ndash;&gt;-->
+            <!--&lt;!&ndash;两个姓代表匹配0或者更多的目录&ndash;&gt;-->
+                <!--&lt;!&ndash;/**代表拦击所有请求&ndash;&gt;-->
+            <!--<bean class="cn.appsys.interceptor.SysInterceptor"/>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
 </beans>

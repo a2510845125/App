@@ -11,7 +11,7 @@
                 <div class="form-group">
                     <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">软件名称 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" disabled="disabled"
+                        <input type="text" class="form-control" readonly="readonly"
                                placeholder="${ChakanList.softwareName}">
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">APK名称 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" disabled="disabled" placeholder="${ChakanList.APKName}">
+                        <input type="text" class="form-control" readonly="readonly" placeholder="${ChakanList.APKName}">
                     </div>
                 </div>
 
@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">支持ROM </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" disabled="disabled"
+                        <input type="text" class="form-control" readonly="readonly"
                                placeholder="${ChakanList.supportROM}">
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">界面语言 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" disabled="disabled"
+                        <input type="text" class="form-control" readonly="readonly"
                                placeholder="${ChakanList.interfaceLanguage}">
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">软件大小 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" disabled="disabled"
+                        <input type="text" class="form-control" readonly="readonly"
                                placeholder="${ChakanList.softwareSize}M">
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="form-group">
                     <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">下载次数</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" disabled="disabled"
+                        <input type="text" class="form-control" readonly="readonly"
                                placeholder="${ChakanList.downloads}">
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">所属分类</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" disabled="disabled"
+                        <input type="text" class="form-control" readonly="readonly"
                                placeholder="${ChakanList.categoryLevel1Name}>${ChakanList.categoryLevel2Name}>${ChakanList.categoryLevel3Name}">
                     </div>
                 </div>
@@ -72,15 +72,15 @@
                 <div class="form-group">
                     <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">APP状态 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" disabled="disabled"
+                        <input type="text" class="form-control" readonly="readonly"
                                placeholder="${ChakanList.statusName}">
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div style="height: 200px;" class="form-group">
                     <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">应用简介 </label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control" disabled="disabled" placeholder="${ChakanList.appInfo}">
+                        <input type="text" class="form-control" readonly="readonly" placeholder="${ChakanList.appInfo}">
                     </div>
                 </div>
 
@@ -136,8 +136,8 @@
                         </span>
                   </div>
                 </div>
-                <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
-                    <span style="color: black">${as.creationDate}</span>
+                <div style="border: none;overflow:visible" class="col-md-2 col-sm-12 col-xs-12 form-group">
+                    <span style="color: black;">${as.creationDate}</span>
                 </div>
             </c:forEach>
         </div>
@@ -148,3 +148,8 @@
 
 <%@include file="fooder.jsp" %>
 <script type="text/javascript" src="/statics/js/Chakan.js"></script>
+<style>
+    *{
+        font-family:'Microsoft JhengHei'
+    }
+</style>

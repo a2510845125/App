@@ -49,7 +49,7 @@
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
                     <span style="color: black">
                         <%--${as.apkFileName}--%>
-                        暂时
+                       12202_1390386213_4773.apk
                     </span>
                 </div>
                 <div style="border: none" class="col-md-2 col-sm-12 col-xs-12 form-group">
@@ -62,13 +62,15 @@
         </div>
     </div>
     <div style="height: 400px;" class="x_panel tile fixed_height_320 overflow_hidden">
+        <form id="demo-form2" action="/app/addByid.html" method="post" enctype="multipart/form-data"
+              data-parsley-validate class="form-horizontal form-label-left">
         <div class="x_title" style="border-bottom: 0px solid black">
             <p style="color: black">新增版本信息</p>
             <div class="clearfix">
                 <div class="form-group">
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                        <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12">当前软件ID :</label>
-                        <input disabled="disabled" style="width: 300px;" type="text" name="appId" class="form-control"
+                        <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                        <input <%--disabled="disabled"--%> style="width: 300px;" type="hidden" name="appId" class="form-control"
                                value="${ChakanList.id}">
                     </div>
                 </div>
@@ -108,18 +110,75 @@
                     </div>
                 </div>
 
+
+
+
+
+                <div class="form-group">
+
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <label style="color: black" class="control-label col-md-3 col-sm-3 col-xs-12"
+                               for="a_logoPicPath">APK文件 <span class="required"></span>
+                        </label>
+                        <div class="" style="margin-top: 5px">
+                            <input type="file" class="" name="a_logoPicPath"
+                                   required="required" id="a_logoPicPath"/>
+                            ${fileUploadError }
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
 
         </div>
         <div class="form-group">
+            <%--addByid()--%>
             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                <button type="submit" class="btn btn-primary" onclick="addByid()">保存</button>
+                <button type="submit" style="background: white" class="btn btn-primary" onclick=""><span style="color: black">保存</span></button>
                 <button type="submit" class="btn btn-success">返回</button>
             </div>
         </div>
+        </form>
     </div>
 </div>
 
 
 <%@include file="fooder.jsp" %>
 <script src="/statics/js/addByid.js"></script>
+<style>
+    *{
+        font-family:'Microsoft JhengHei'
+    }
+    .btn {
+
+        border: 1px solid rgb(211, 215, 217);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn:hover {
+        box-shadow: 1px 1px 25px 10px rgba(203, 197, 198, 0.2);
+    }
+
+    .btn:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+                150deg,
+                transparent,
+                rgba(184, 176, 176, 0.4),
+                transparent
+        );
+        transition: all 650ms;
+    }
+
+    .btn:hover:before {
+        left: 100%;
+    }
+</style>
